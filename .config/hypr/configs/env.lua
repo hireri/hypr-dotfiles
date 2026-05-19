@@ -1,0 +1,8 @@
+hl.env("XCURSOR_SIZE", "24")
+hl.env("HYPRCURSOR_SIZE", "24")
+hl.env("QT_QPA_PLATFORMTHEME", "qt6ct")
+hl.env("QML_XHR_ALLOW_FILE_READ", "1")
+hl.env("XDG_MENU_PREFIX", "arch-")
+hl.env("XDG_CURRENT_DESKTOP", "Hyprland")
+hl.env("XCURSOR_THEME", "WhiteSur-cursors")
+hl.env("PATH", os.getenv("HOME") .. "/.local/bin:/usr/local/bin:/usr/bin:/bin")

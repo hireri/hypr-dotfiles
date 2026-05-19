@@ -1,0 +1,52 @@
+{
+    "logo": {
+        "type": "auto",
+        "source": "$(ls $HOME/.config/fastfetch/logos/amy.png | shuf -n 1)",
+        "width": 26,
+        "height": 12
+    },
+    "display": {
+        "separator": " ~ "
+    },
+    "modules": [
+        {
+            "type": "title",
+            "format": "><::> {user-name}@{host-name}"
+        },
+        "break",
+        {
+            "type": "os",
+            "key": "🐠 OS"
+        },
+        {
+            "type": "uptime",
+            "key": "⌛ Uptime"
+        },
+        {
+            "type": "shell",
+            "key": "🐚 Shell"
+        },
+        {
+            "type": "terminal",
+            "key": "🪸 Terminal"
+        },
+        {
+            "type": "memory",
+            "key": "💽 Memory"
+        },
+        {
+            "type": "disk",
+            "key": "💾 Storage"
+        },
+        {
+            "type": "packages",
+            "key": "📦 Packages"
+        },
+        "break",
+        {
+            "type": "colors",
+            "symbol": "circle"
+        },
+        "break"
+    ]
+}

@@ -1,0 +1,17 @@
+{
+  "material-code.colors": {
+    "primary": "{{colors.primary.dark.hex}}",
+    "background": "{{colors.surface.dark.hex}}",
+    "card": "{{colors.surface_container.dark.hex}}",
+    "popover": "{{colors.surface_container_high.dark.hex}}",
+    "border": "{{colors.outline_variant.dark.hex}}",
+    "foreground": "{{colors.on_surface.dark.hex}}",
+    "mutedForeground": "{{colors.on_surface_variant.dark.hex}}",
+    "secondary": "{{colors.secondary_container.dark.hex}}",
+    "secondaryForeground": "{{colors.on_secondary_container.dark.hex}}",
+    "error": "{{colors.error.dark.hex}}",
+    "errorForeground": "{{colors.on_error.dark.hex}}",
+    "success": "{{colors.tertiary.dark.hex}}",
+    "warning": "{{colors.secondary.dark.hex}}"
+  }
+}
