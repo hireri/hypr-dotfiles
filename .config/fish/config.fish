@@ -1,6 +1,5 @@
 zoxide init fish | source
 test -f ~/.config/fish/functions/dotfiles.fish && source ~/.config/fish/functions/dotfiles.fish
-test -f ~/.config/fish/functions/turbo.fish && source ~/.config/fish/functions/turbo.fish
 
 alias g='git'
 alias ga='git add'
@@ -25,8 +24,6 @@ alias py='python3.12'
 alias htop='btop'
 alias files='ranger'
 
-alias niggabob='kitten icat --align left /home/aveline/Downloads/niggabob.jpg'
-
 abbr -a find fd
 abbr -a up 'yay -Syu'
 abbr -a i 'yay -S'
@@ -39,55 +36,7 @@ set fish_greeting
 
 if not string match -q 'vscode*' -- $TERM_PROGRAM \
         && test "$FASTFETCH_SKIP" != 1
-
     fastfetch
-
-    echo ""
-
-    set _kern (uname -r)
-    set _arch (uname -m)
-    echo "Linux $_kern $_arch"
-
-    if set -q HYPRLAND_INSTANCE_SIGNATURE
-        set _wm Hyprland
-        set _display $WAYLAND_DISPLAY
-        set _wmver (hyprctl version 2>/dev/null | string match -r 'v[\d.]+' | head -1)
-        echo "$_wm $_wmver, wayland display on :$_display"
-    else if set -q SWAYSOCK
-        set _display $WAYLAND_DISPLAY
-        echo "Sway, wayland display on :$_display"
-    else if set -q DISPLAY
-        echo "display $DISPLAY"
-    end
-
-    set _up_s (string split ' ' (cat /proc/uptime))[1]
-    set _up_s (math -s0 $_up_s)
-    set _up_h (math -s0 "$_up_s / 3600")
-    set _up_m (math -s0 "($_up_s % 3600) / 60")
-    set _users (who 2>/dev/null | wc -l | string trim)
-    echo "uptime $_up_h:$(printf '%02d' $_up_m), $_users user"
-
-    if command -sq pacman
-        set _pkgs (pacman -Qq 2>/dev/null | wc -l | string trim)
-        echo "pacman: $_pkgs packages"
-    else if command -sq dpkg
-        set _pkgs (dpkg -l 2>/dev/null | grep -c '^ii' | string trim)
-        echo "dpkg: $_pkgs packages"
-    end
-
-    set _iface (ip -o -4 addr show 2>/dev/null | grep -v '127.0.0.1' | head -1)
-    if test -n "$_iface"
-        set _ifname (echo $_iface | awk '{print $2}')
-        set _ifip (echo $_iface | awk '{print $4}' | string replace -r '/.*' '')
-        echo "$_ifname: $_ifip"
-    else
-        echo "network: no interface"
-    end
-
-    date '+%Y-%m-%d %H:%M:%S'
-
-    echo ""
-
 end
 
 function reload
@@ -98,8 +47,6 @@ function reload
     source ~/.config/fish/config.fish
     echo (set_color --bold cyan)│(set_color normal) Done ✓
     echo (set_color --bold cyan)╰───────────────(set_color normal)
-
-    set -gx FASTFETCH_SKIP 0
 end
 
 function config
@@ -110,23 +57,20 @@ function weather
     curl -s "wttr.in/$argv?format=3"
 end
 
-function my_postexec --on-event fish_postexec
-    if not string match -q 'vscode*' -- $TERM_PROGRAM \
-            && test "$FASTFETCH_SKIP" != 1
-        mommy -1 -s $status
-    end
-end
-
 function fish_prompt
     set -l last_status $status
 
     if test $last_status -ne 0
-        echo -n (set_color red)"exit $last_status  "(set_color normal)
+        echo -n (set_color --bold red)"[$last_status] "(set_color normal)
     end
 
-    echo -n (whoami)"@"(hostname -s)
-    echo -n " "(prompt_pwd)
-    echo -n " % "
+    echo -n (set_color --bold cyan)(whoami)(set_color normal)
+    echo -n (set_color white)"@"(set_color normal)
+    echo -n (set_color --bold blue)(hostname -s)(set_color normal)
+
+    echo -n (set_color --bold magenta)" "(prompt_pwd)(set_color normal)
+
+    echo -n (set_color --bold yellow)" ➜ "(set_color normal)
 end
 
 function fish_right_prompt
@@ -143,21 +87,20 @@ function fish_right_prompt
     set -l behind (git rev-list --count HEAD..@{u} 2>/dev/null; or echo 0)
 
     set -l status_parts
+    test "$staged" -gt 0; and set -a status_parts (set_color green)" "$staged(set_color normal)
+    test "$dirty" -gt 0; and set -a status_parts (set_color yellow)" "$dirty(set_color normal)
+    test "$untracked" -gt 0; and set -a status_parts (set_color red)" "$untracked(set_color normal)
+    test "$ahead" -gt 0; and set -a status_parts (set_color cyan)" "$ahead(set_color normal)
+    test "$behind" -gt 0; and set -a status_parts (set_color magenta)" "$behind(set_color normal)
 
-    test "$staged" -gt 0; and set -a status_parts "+$staged"
-    test "$dirty" -gt 0; and set -a status_parts "~$dirty"
-    test "$untracked" -gt 0; and set -a status_parts "?$untracked"
-    test "$ahead" -gt 0; and set -a status_parts "^$ahead"
-    test "$behind" -gt 0; and set -a status_parts "v$behind"
-
-    echo -n "  $branch"
+    echo -n " "
+    echo -n (set_color brblack)"on "(set_color normal)
+    echo -n (set_color --bold blue)" "$branch(set_color normal)
 
     if test (count $status_parts) -gt 0
-        echo -n " ["(string join " " $status_parts)"]"
+        echo -n " "(string join "  " $status_parts)
     end
 end
-
-set PATH $PATH $HOME/go/bin
 
 # Created by `pipx` on 2025-08-21 21:25:19
 set PATH $PATH $HOME/.local/bin
