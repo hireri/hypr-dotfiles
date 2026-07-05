@@ -30,13 +30,18 @@ header "hypr-dotfiles installer"
 [[ "$(uname)" == "Linux" ]] || die "This script is for Linux only."
 command -v pacman &>/dev/null || die "This script is for Arch-based systems only."
 
-# Detect init system
 _runit=false
 _openrc=false
-if command -v sv &>/dev/null; then
+_systemd=false
+if [[ -d /etc/runit ]] && command -v sv &>/dev/null; then
     _runit=true
-elif command -v rc-service &>/dev/null; then
+elif command -v rc-service &>/dev/null && [[ -d /etc/init.d ]]; then
     _openrc=true
+elif [[ -d /run/systemd/system ]]; then
+    _systemd=true
+else
+    warn "Could not confidently detect init system — assuming systemd"
+    _systemd=true
 fi
 
 header "Setting up git"
@@ -73,8 +78,16 @@ success "yay ready"
 header "Installing packages"
 
 PACKAGES=(
-    # hyprland stack
     hyprland hyprsunset hypridle hyprpicker hyprlock xdg-desktop-portal-hyprland
+
+    # session / seat management (needed on runit; harmless no-op alongside systemd-logind)
+    seatd
+
+    # display manager (drives login -> Hyprland on both init systems)
+    greetd
+
+    # dbus (session + system bus, required by quickshell/notifications/polkit/NM)
+    dbus
 
     # shell
     fish zoxide eza bat ripgrep fd fzf fastfetch btop ranger
@@ -163,18 +176,20 @@ else
 fi
 
 info "Checking out dotfiles..."
-if ! git --git-dir="$DOTFILES_DIR" --work-tree="$HOME" checkout 2>/dev/null; then
+if ! git --git-dir="$DOTFILES_DIR" --work-tree="$HOME" checkout 2>/tmp/checkout-err; then
     warn "Conflicts detected — backing up existing files to ~/.dotfiles-backup/"
     mkdir -p "$HOME/.dotfiles-backup"
-    git --git-dir="$DOTFILES_DIR" --work-tree="$HOME" checkout 2>&1 \
-        | grep "^\s" \
-        | awk '{print $1}' \
+
+    grep $'^\t' /tmp/checkout-err \
+        | sed 's/^\t//' \
         | while IFS= read -r f; do
+            [[ -f "$HOME/$f" ]] || continue
             mkdir -p "$HOME/.dotfiles-backup/$(dirname "$f")"
             mv "$HOME/$f" "$HOME/.dotfiles-backup/$f"
           done
     git --git-dir="$DOTFILES_DIR" --work-tree="$HOME" checkout
 fi
+rm -f /tmp/checkout-err
 
 success "Dotfiles checked out"
 
@@ -198,7 +213,20 @@ if ! fish -c "functions -q fisher" 2>/dev/null; then
     fish -c "curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher"
 fi
 
+if [[ "$SHELL" != "$(command -v fish)" ]]; then
+    info "Setting fish as default shell..."
+    chsh -s "$(command -v fish)"
+fi
+
 success "Fish ready"
+
+header "Setting up seat management"
+
+if $_runit || $_openrc; then
+    sudo usermod -aG seat "$USER" 2>/dev/null || warn "Could not add $USER to seat group — check manually"
+else
+    info "systemd detected — seatd is optional (logind handles seat management); installed anyway for consistency"
+fi
 
 header "Enabling services"
 
@@ -223,13 +251,92 @@ enable_service() {
 
 enable_service bluetooth
 enable_service NetworkManager
+enable_service dbus
+$_runit && enable_service seatd
 
 success "Services enabled"
+
+header "Installing tuigreet (fork)"
+
+if ! command -v tuigreet &>/dev/null; then
+    info "Installing greetd-tuigreet-fork-bin from AUR..."
+    yay -S --noconfirm --needed greetd-tuigreet-fork-bin
+fi
+
+success "tuigreet ready"
+
+header "Configuring greetd"
+
+sudo mkdir -p /etc/greetd
+GREETD_CONFIG="/etc/greetd/config.toml"
+
+TUIGREET_CMD="tuigreet --time --remember --remember-session --cmd Hyprland"
+
+if [[ -f "$GREETD_CONFIG" ]]; then
+    info "Existing $GREETD_CONFIG found — leaving it as-is (back it up manually if you want a clean overwrite)"
+else
+    sudo tee "$GREETD_CONFIG" >/dev/null <<EOF
+[terminal]
+vt = 1
+
+[default_session]
+command = "$TUIGREET_CMD"
+user = "greeter"
+EOF
+    success "Wrote $GREETD_CONFIG"
+fi
+
+header "Setting up login -> Hyprland"
+
+greetd_service_exists=false
+if $_systemd; then
+    greetd_service_exists=true
+elif $_runit && [[ -d /etc/runit/sv/greetd ]]; then
+    greetd_service_exists=true
+elif $_openrc && [[ -f /etc/init.d/greetd ]]; then
+    greetd_service_exists=true
+fi
+
+if $greetd_service_exists; then
+    enable_service greetd
+    success "greetd enabled — tuigreet will prompt for login on boot"
+elif $_runit; then
+    warn "No /etc/runit/sv/greetd found. The main 'greetd' AUR package does not"
+    warn "ship a runit service — you need 'greetd-runit' from the AUR, or a"
+    warn "hand-written run script in /etc/runit/sv/greetd/run. Attempting to"
+    warn "install greetd-runit now..."
+    if yay -S --noconfirm --needed greetd-runit 2>/dev/null && [[ -d /etc/runit/sv/greetd ]]; then
+        enable_service greetd
+        success "greetd-runit installed and enabled"
+    else
+        die "greetd-runit not available or install failed. Fix this manually before rebooting, or you will land at a bare TTY with no session launcher. See greetd's own repo for the runit run-script reference: https://git.sr.ht/~kennylevinsen/greetd"
+    fi
+else
+    warn "No greetd service file found for this init system — falling back to TTY autologin"
+    info "Add Hyprland launch to fish config, gated to tty1"
+    FISH_CONFIG="$HOME/.config/fish/config.fish"
+    mkdir -p "$(dirname "$FISH_CONFIG")"
+    if ! grep -q "exec Hyprland" "$FISH_CONFIG" 2>/dev/null; then
+        cat >> "$FISH_CONFIG" <<'EOF'
+
+if status is-login
+    and test (tty) = /dev/tty1
+    and not set -q WAYLAND_DISPLAY
+    exec Hyprland
+end
+EOF
+        success "Added Hyprland autostart to $FISH_CONFIG"
+    else
+        info "Hyprland autostart already present in $FISH_CONFIG"
+    fi
+    warn "You will still need a getty autologin on tty1 for a truly hands-off login."
+    warn "Manual step: run 'sudo systemctl edit getty@tty1' (systemd) or configure"
+    warn "  /etc/runit/sv/agetty-tty1/conf (runit) to add --autologin $USER"
+fi
 
 echo ""
 echo -e "${c_green}╭────────────────────────────────────────╮${c_reset}"
 echo -e "${c_green}│${c_reset}  All done! Log out and back in, or"
 echo -e "${c_green}│${c_reset}  reboot to start Hyprland"
-echo -e "${c_green}│${c_reset}  My name is Claude 🤖 and i am evil ☢️"
 echo -e "${c_green}╰────────────────────────────────────────╯${c_reset}"
 echo ""
