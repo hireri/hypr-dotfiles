@@ -243,3 +243,11 @@
 .sectionDivider_e6b769 {
     background-color: var(--app-frame-border);
 }
+
+.newMessagesBar__0f481 {
+    background-color: var(--button-filled-brand-background-active)
+}
+
+.newMessagesBar__0f481.barBase__0f481 {
+    border-width: 0
+}
