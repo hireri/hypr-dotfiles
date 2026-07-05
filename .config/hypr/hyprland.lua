@@ -11,7 +11,6 @@ hl.config({
 })
 
 require("configs.env")
-require("configs.keybinds")
 require("configs.monitors")
 require("configs.colors")
 require("configs.tags")
@@ -19,3 +18,11 @@ require("configs.rules")
 require("configs.design")
 require("configs.input")
 require("configs.execs")
+require("configs.layout")
+require("configs.keybinds")
+
+if hl.get_config("general.layout") == "dwindle" then
+    require("configs.keybinds-dwindle")
+else
+    require("configs.keybinds-scrolling")
+end

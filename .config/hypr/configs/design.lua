@@ -1,21 +1,4 @@
 hl.config({
-    general = {
-        gaps_in = 6,
-        gaps_out = 12,
-        border_size = 1,
-        no_focus_fallback = true,
-        resize_on_border = true,
-        allow_tearing = false,
-        layout = "dwindle",
-
-        snap = {
-            enabled = true,
-            window_gap = 4,
-            monitor_gap = 5,
-            respect_gaps = true
-        }
-    },
-
     decoration = {
         rounding = 18,
         rounding_power = 2,
@@ -33,18 +16,15 @@ hl.config({
         blur = {
             enabled = true,
             xray = true,
-            special = false,
+            popups = true,
+            special = true,
             new_optimizations = true,
             size = 10,
             passes = 3,
             brightness = 1,
             noise = 0.05,
             vibrancy = 0.5,
-            vibrancy_darkness = 0.5,
-            popups = true,
-            popups_ignorealpha = 0.6,
-            input_methods = true,
-            input_methods_ignorealpha = 0.8
+            vibrancy_darkness = 0.5
         }
     }
 })

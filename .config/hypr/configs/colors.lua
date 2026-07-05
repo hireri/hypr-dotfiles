@@ -2,13 +2,13 @@ hl.config({
     general = {
         col = {
             active_border = {
-                colors = {"#f6bc70", "#bacd9f"}
+                colors = {"#ffb0cf", "#f1bc97"}
             },
-            inactive_border = "#4f4539"
+            inactive_border = "#514348"
         }
     },
     misc = {
-        background_color = "rgba(18120cFF)"
+        background_color = "rgba(191114FF)"
     }
 })
 

@@ -1,15 +1,16 @@
 local commands = {
     "dbus-update-activation-environment --all",
-    "/usr/lib/polkit-kde-authentication-agent-1",
+    "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1",
     "awww-daemon",
-    "hyprlock",
     "hypridle",
     "qs -c isra",
     "wl-paste --watch clipvault store",
-    "rm -f ~/.config/obs-studio/.sentinel",
+    "wl-clip-persist --clipboard regular",
+    "rm -rf ~/.config/obs-studio/.sentinel",
     "steam -silent",
     "QT_QPA_PLATFORM=wayland obs --startreplaybuffer --minimize-to-tray --scene Replay",
-    "hyprctl reload"
+    "hyprctl reload",
+    "runsvdir ~/.runit/runsvdir",
 }
 
 hl.on("hyprland.start", function()

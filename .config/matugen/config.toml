@@ -53,3 +53,11 @@ post_hook = 'pkill -USR1 cava'
 [templates.obs]
 input_path = '~/.config/matugen/templates/matugen.obt'
 output_path = '~/.config/obs-studio/themes/matugen.obt'
+
+[templates.obsidian]
+input_path = '~/.config/matugen/templates/obsidian.css'
+output_path = '~/Documents/Obsidian Vault/.obsidian/snippets/matugen.css'
+
+[templates.vesktop]
+input_path = '~/.config/matugen/templates/discord.css'
+output_path = '~/.config/Equicord/themes/matugen-theme.css'

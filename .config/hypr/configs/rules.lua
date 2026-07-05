@@ -62,6 +62,22 @@ hl.window_rule({
     size = {"monitor_w * 0.60", "monitor_h * 0.60"}
 })
 
+hl.window_rule({
+    match = {
+        class = "org.prismlauncher.PrismLauncher"
+    },
+    float = true
+})
+
+hl.window_rule({
+    match = {
+        class = "^(zen)$",
+        title = "^(Zen)$"
+    },
+    no_blur = true,
+    border_size = 0
+})
+
 -- Popups & Dialogues
 hl.window_rule({
     match = {
@@ -95,12 +111,12 @@ hl.window_rule({
 -- Share
 hl.window_rule({
     match = {
-        title = "^(Hyprland Share)$"
+        title = "^(Screencast Source Selector)$"
     },
     float = true,
     center = true,
     pin = true,
-    size = {"monitor_w * 0.25", "monitor_h * 0.3"}
+    size = {"monitor_w * 0.35", "monitor_h * 0.35"}
 })
 
 hl.window_rule({
@@ -131,9 +147,18 @@ hl.window_rule({
 
 hl.layer_rule({
     match = {
-        namespace = "quickshell"
+        namespace = "quickshell:bar"
     },
-    blur = false
+    blur = true,
+    ignore_alpha = 0.5
+})
+
+hl.layer_rule({
+    match = {
+        namespace = "quickshell:powerMenu"
+    },
+    blur = true,
+    ignore_alpha = 0.5
 })
 
 hl.layer_rule({
@@ -148,17 +173,4 @@ hl.layer_rule({
         initial_title = "steam_app_2457888594"
     },
     blur = false
-})
-
--- ------------------------------------------------------------
--- Layout Configs
--- ------------------------------------------------------------
-
-hl.config({
-    dwindle = {
-        preserve_split = true
-    },
-    master = {
-        new_status = "master"
-    }
 })
