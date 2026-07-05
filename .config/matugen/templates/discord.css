@@ -233,3 +233,9 @@
 .iconBadge__650eb.isCurrentUserConnected__650eb {
     background-color: var(--button-filled-brand-background-active)
 }
+
+.container__9293f,
+.searchBar_e6b769
+{
+    border-color: var(--app-frame-border)
+}
