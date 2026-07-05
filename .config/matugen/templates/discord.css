@@ -235,7 +235,9 @@
 }
 
 .container__9293f,
-.searchBar_e6b769
+.searchBar_e6b769,
+.sectionDivider_e6b769
 {
-    border-color: var(--app-frame-border)
+    border-color: var(--app-frame-border);
+    background-color: var(--app-frame-border);
 }
