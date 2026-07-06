@@ -61,3 +61,7 @@ output_path = '~/Documents/Obsidian Vault/.obsidian/snippets/matugen.css'
 [templates.vesktop]
 input_path = '~/.config/matugen/templates/discord.css'
 output_path = '~/.config/Equicord/themes/matugen-theme.css'
+
+[templates.millennium]
+input_path = '~/.config/matugen/templates/millennium.css'
+output_path = '~/.steam/steam/steamui/skins/Material-Theme/css/main/colors/matugen.css'
