@@ -65,3 +65,8 @@ output_path = '~/.config/Equicord/themes/matugen-theme.css'
 [templates.millennium]
 input_path = '~/.config/matugen/templates/millennium.css'
 output_path = '~/.steam/steam/steamui/skins/Material-Theme/css/main/colors/matugen.css'
+
+[templates.spotify]
+input_path = '~/.config/matugen/templates/spicetify.ini'
+output_path = '~/.config/spicetify/Themes/Sleek/color.ini'
+post_hook = '~/.config/matugen/scripts/spicetify.sh'
