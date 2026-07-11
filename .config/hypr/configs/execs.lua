@@ -9,7 +9,6 @@ local commands = {
     "rm -rf ~/.config/obs-studio/.sentinel",
     "steam -silent",
     "QT_QPA_PLATFORM=wayland obs --startreplaybuffer --minimize-to-tray --scene Replay",
-    "hyprctl reload",
     "runsvdir ~/.runit/runsvdir",
 }
 
