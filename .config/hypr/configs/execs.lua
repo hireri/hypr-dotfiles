@@ -1,7 +1,6 @@
 local commands = {
     "dbus-update-activation-environment --all",
     "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1",
-    "awww-daemon",
     "hypridle",
     "qs -c isra",
     "wl-paste --watch clipvault store",
