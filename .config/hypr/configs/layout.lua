@@ -6,7 +6,7 @@ hl.config({
         no_focus_fallback = true,
         resize_on_border = true,
         allow_tearing = false,
-        layout = "scrolling",
+        layout = "dwindle",
 
         snap = {
             enabled = true,

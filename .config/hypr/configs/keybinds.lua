@@ -105,9 +105,15 @@ hl.bind(mainMod .. " + SUPER_L", hl.dsp.exec_cmd("qs -c isra ipc call launcher t
 hl.bind(mainMod .. " + V", hl.dsp.exec_cmd('qs -c isra ipc call launcher openWith ";"'))
 hl.bind(mainMod .. " + Period", hl.dsp.exec_cmd('qs -c isra ipc call launcher openWith ":"'))
 
-hl.bind(mainMod .. " + SHIFT + N", hl.dsp.exec_cmd("qs -c isra ipc call media next"))
-hl.bind(mainMod .. " + SHIFT + P", hl.dsp.exec_cmd("qs -c isra ipc call media togglePlaying"))
-hl.bind(mainMod .. " + SHIFT + B", hl.dsp.exec_cmd("qs -c isra ipc call media previous"))
+hl.bind(mainMod .. " + SHIFT + N", hl.dsp.exec_cmd("qs -c isra ipc call media next"), {
+    locked = true
+})
+hl.bind(mainMod .. " + SHIFT + P", hl.dsp.exec_cmd("qs -c isra ipc call media togglePlaying"), {
+    locked = true
+})
+hl.bind(mainMod .. " + SHIFT + B", hl.dsp.exec_cmd("qs -c isra ipc call media previous"), {
+    locked = true
+})
 
 hl.bind(mainMod .. " + I", hl.dsp.exec_cmd("qs -c isra ipc call settings open overview"))
 hl.bind(mainMod .. " + SHIFT + S", hl.dsp.exec_cmd("qs -c isra ipc call screenshot activate"))
@@ -131,22 +137,28 @@ hl.bind(mainMod .. " + G", hl.dsp.exec_cmd("qs -c isra ipc call gamemode toggle"
 -- Hardware & Multimedia
 -- -----------------------------------------------------
 hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd("wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+"), {
-    repeating = true
+    repeating = true,
+    locked = true
 })
 hl.bind("XF86AudioLowerVolume", hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"), {
-    repeating = true
+    repeating = true,
+    locked = true
 })
 hl.bind("XF86AudioMute", hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"), {
+    locked = true,
     locked = true
 })
 hl.bind("XF86AudioMicMute", hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"), {
+    locked = true,
     locked = true
 })
 hl.bind("XF86MonBrightnessUp", hl.dsp.exec_cmd("brightnessctl -e4 -n2 set 5%+"), {
-    repeating = true
+    repeating = true,
+    locked = true
 })
 hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd("brightnessctl -e4 -n2 set 5%-"), {
-    repeating = true
+    repeating = true,
+    locked = true
 })
 
 hl.bind("XF86AudioNext", hl.dsp.exec_cmd("playerctl next"), {
@@ -162,7 +174,9 @@ hl.bind("XF86AudioPrev", hl.dsp.exec_cmd("playerctl previous"), {
     locked = true
 })
 
-hl.bind(mainMod .. " + SHIFT + M", hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"))
+hl.bind(mainMod .. " + SHIFT + M", hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"), {
+    locked = true
+})
 
 -- -----------------------------------------------------
 -- Mouse Binds
