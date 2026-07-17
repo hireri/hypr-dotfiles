@@ -74,3 +74,7 @@ output_path = '~/.config/spicetify/Themes/Sleek/color.ini'
 input_path = '~/.config/matugen/templates/spicetify-comfy.ini'
 output_path = '~/.config/spicetify/Themes/Comfy/color.ini'
 post_hook = '~/.config/matugen/scripts/spicetify.sh'
+
+[templates.modernz]
+input_path = '~/.config/matugen/templates/modernz.conf'
+output_path = '~/.config/mpv/script-opts/modernz.conf'
