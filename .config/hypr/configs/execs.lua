@@ -2,7 +2,7 @@ local commands = {
     "dbus-update-activation-environment --all",
     "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1",
     "hypridle",
-    "qs -c isra",
+    "qs -n -c isra",
     "wl-paste --watch clipvault store",
     "wl-clip-persist --clipboard regular",
     "rm -rf ~/.config/obs-studio/.sentinel",
