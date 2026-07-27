@@ -78,3 +78,11 @@ post_hook = '~/.config/matugen/scripts/spicetify.sh'
 [templates.modernz]
 input_path = '~/.config/matugen/templates/modernz.conf'
 output_path = '~/.config/mpv/script-opts/modernz.conf'
+
+[templates.feishin]
+input_path = '~/.config/matugen/templates/fein.json'
+output_path = '~/.config/feishin/Themes/matugen.json'
+
+[templates.gimp]
+input_path = '~/.config/matugen/templates/gimp.css'
+output_path = '~/.config/GIMP/3.2/themes/Matugen/gimp.css'

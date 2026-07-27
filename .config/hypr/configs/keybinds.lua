@@ -94,9 +94,9 @@ hl.bind("CTRL + ALT + Delete", hl.dsp.exec_cmd("hyprctl dispatch exit 0"))
 hl.bind(mainMod .. " + Escape", hl.dsp.exec_cmd("missioncenter"))
 
 -- Quickshell
-hl.bind(mainMod .. " + S", hl.dsp.global("quickshell:openQuickSettings"))
-hl.bind(mainMod .. " + M", hl.dsp.global("quickshell:openPowerMenu"))
-hl.bind(mainMod .. " + W", hl.dsp.global("quickshell:openWallpaperPicker"))
+hl.bind(mainMod .. " + S", hl.dsp.exec_cmd('qs -c isra ipc call quicksettings toggle'))
+hl.bind(mainMod .. " + M", hl.dsp.exec_cmd('qs -c isra ipc call powermenu toggle'))
+hl.bind(mainMod .. " + W", hl.dsp.exec_cmd('qs -c isra ipc call wallpaperpicker toggle'))
 
 hl.bind(mainMod .. " + SUPER_L", hl.dsp.exec_cmd("qs -c isra ipc call launcher toggle"), {
     release = true
