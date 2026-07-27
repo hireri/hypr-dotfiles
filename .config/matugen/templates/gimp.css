@@ -1,0 +1,337 @@
+/* ===================================================================
+ * GIMP 3.2 Clean Matugen
+ * =================================================================== */
+
+/* -------------------------------------------------------------------
+ * 1. Global GTK Color Variable Overrides
+ * ------------------------------------------------------------------- */
+@define-color theme_bg_color #1e1e1e;
+@define-color theme_fg_color #d4d4d4;
+@define-color theme_base_color #252526;
+@define-color theme_text_color #d4d4d4;
+@define-color theme_selected_bg_color {{ colors.primary.default.hex }};
+@define-color theme_selected_fg_color {{ colors.on_primary.default.hex }};
+@define-color theme_border #333333;
+
+/* Custom Variables */
+@define-color bg_base #1e1e1e;
+@define-color bg_section #252526;
+@define-color bg_card #2d2d2d;
+@define-color bg_hover #383838;
+
+@define-color accent_primary {{ colors.primary.default.hex }};
+@define-color accent_fg {{ colors.on_primary.default.hex }};
+
+@define-color border_flat #333333;
+@define-color text_main #e1e1e1;
+@define-color text_muted #888888;
+
+/* -------------------------------------------------------------------
+ * 2. Universal Reset & Base Spacing
+ * ------------------------------------------------------------------- */
+* {
+    background-image: none;
+    background-color: transparent;
+    box-shadow: none;
+    text-shadow: none;
+    border-color: @border_flat;
+    color: @text_main;
+    -GtkHTML-clink-color: @accent_primary;
+}
+
+window,
+dialog,
+.background {
+    background-color: @bg_base;
+    color: @text_main;
+}
+
+.symbolic,
+iconview {
+    -gtk-icon-style: symbolic;
+    color: @text_main;
+}
+
+/* -------------------------------------------------------------------
+ * 3. Defined Sections, Docks & Cards
+ * ------------------------------------------------------------------- */
+GimpDock,
+GimpDockbook,
+GimpDockable,
+.frame,
+viewport,
+stack,
+box {
+    background-color: @bg_section;
+}
+
+GimpDockable {
+    border: 1px solid @border_flat;
+    border-radius: 6px;
+}
+
+/* Compact Headers and Menubars */
+headerbar,
+menubar {
+    background-color: @bg_section;
+    color: @text_main;
+    border-bottom: 1px solid @border_flat;
+    min-height: 24px;
+    /* Reduced from default */
+    padding: 0;
+}
+
+menubar>menuitem {
+    min-height: 20px;
+    padding: 2px 6px;
+}
+
+/* -------------------------------------------------------------------
+ * 4. Context Menus, Top Menubar Dropdowns, and Nested Submenus
+ * ------------------------------------------------------------------- */
+menu,
+.menu,
+menu.popup,
+.context-menu,
+menuitem menu,
+menu menu {
+    background-color: @theme_bg_color;
+    color: @text_main;
+    border: 1px solid @border_flat;
+    border-radius: 6px;
+    padding: 2px;
+    /* Tighter menu boundaries */
+}
+
+/* Compact Menu Items */
+menu menuitem,
+.menu menuitem,
+menu.popup menuitem,
+.context-menu menuitem,
+menu menuitem *,
+menuitem modelbutton,
+menuitem label {
+    background-color: transparent;
+    color: @text_main;
+    min-height: 18px;
+    /* Forces menus to be much denser */
+    padding: 2px 6px;
+    /* Reduced padding */
+}
+
+menu menuitem label,
+menu menuitem arrow,
+menu menuitem image,
+menu menuitem modelbutton label {
+    color: @text_main;
+}
+
+/* Active Hover & Selected States */
+menu menuitem:hover:not(:disabled):not(:insensitive),
+menu menuitem:selected:not(:disabled):not(:insensitive),
+menu.popup menuitem:hover:not(:disabled):not(:insensitive),
+menu.popup menuitem:selected:not(:disabled):not(:insensitive),
+.context-menu menuitem:hover:not(:disabled):not(:insensitive),
+.context-menu menuitem:selected:not(:disabled):not(:insensitive) {
+    background-color: @accent_primary;
+    color: @accent_fg;
+    border-radius: 4px;
+}
+
+menu menuitem:hover:not(:disabled):not(:insensitive)>label,
+menu menuitem:selected:not(:disabled):not(:insensitive)>label,
+menu menuitem:hover:not(:disabled):not(:insensitive)>arrow,
+menu menuitem:selected:not(:disabled):not(:insensitive)>arrow,
+menu menuitem:hover:not(:disabled):not(:insensitive)>image,
+menu menuitem:selected:not(:disabled):not(:insensitive)>image,
+menu menuitem:hover:not(:disabled):not(:insensitive)>box label,
+menu menuitem:selected:not(:disabled):not(:insensitive)>box label,
+menu menuitem:hover:not(:disabled):not(:insensitive)>box image,
+menu menuitem:selected:not(:disabled):not(:insensitive)>box image,
+menu menuitem:hover:not(:disabled):not(:insensitive)>modelbutton,
+menu menuitem:selected:not(:disabled):not(:insensitive)>modelbutton,
+menu menuitem:hover:not(:disabled):not(:insensitive)>modelbutton label,
+menu menuitem:selected:not(:disabled):not(:insensitive)>modelbutton label {
+    color: @accent_fg;
+}
+
+/* Disabled Items */
+menu menuitem:disabled,
+menu menuitem:insensitive,
+menu menuitem:disabled *,
+menu menuitem:insensitive *,
+menu menuitem:disabled label,
+menu menuitem:insensitive label,
+menu menuitem:disabled image,
+menu menuitem:insensitive image,
+menu menuitem:disabled arrow,
+menu menuitem:insensitive arrow,
+menu menuitem:disabled modelbutton label,
+menu menuitem:insensitive modelbutton label {
+    color: @text_muted;
+    background-color: transparent;
+}
+
+menuitem menu menuitem:not(:hover):not(:selected):not(:disabled):not(:insensitive) *,
+menuitem menu menuitem:not(:hover):not(:selected):not(:disabled):not(:insensitive) label {
+    color: @text_main;
+}
+
+/* -------------------------------------------------------------------
+ * 5. Notebook Tabs (Layers, Channels, Paths, etc.)
+ * ------------------------------------------------------------------- */
+notebook {
+    background-color: @bg_base;
+}
+
+notebook header {
+    background-color: @bg_base;
+    border: none;
+}
+
+notebook tab {
+    background-color: @bg_card;
+    color: @text_muted;
+    border-radius: 6px 6px 0 0;
+    margin: 0 1px 0 0;
+    padding: 3px 8px;
+    min-height: 20px;
+    border: 1px solid @border_flat;
+    border-bottom: none;
+}
+
+notebook tab:hover {
+    background-color: @bg_hover;
+    color: @text_main;
+}
+
+notebook tab:checked {
+    background-color: @bg_section;
+    color: @accent_primary;
+    font-weight: bold;
+    border-top: 2px solid @accent_primary;
+}
+
+notebook tab:checked label {
+    color: @accent_primary;
+}
+
+/* -------------------------------------------------------------------
+ * 6. Buttons, Toolbox & Toggles
+ * ------------------------------------------------------------------- */
+button,
+toolpalette button,
+GimpToolPalette button {
+    background-color: @bg_card;
+    color: @text_main;
+    border: 1px solid @border_flat;
+    border-radius: 4px;
+    padding: 2px 6px;
+    min-height: 22px;
+    min-width: 22px;
+    margin: 1px;
+}
+
+button:hover,
+toolpalette button:hover {
+    background-color: @bg_hover;
+    border-color: @accent_primary;
+}
+
+button:checked,
+button:active,
+toolpalette button:checked,
+GimpToolPalette button:checked {
+    background-color: @accent_primary;
+    color: @accent_fg;
+    border-color: @accent_primary;
+}
+
+button:checked *,
+button:active *,
+toolpalette button:checked *,
+GimpToolPalette button:checked * {
+    color: @accent_fg;
+}
+
+/* -------------------------------------------------------------------
+ * 7. Input Controls, Lists, Trees & Spinners
+ * ------------------------------------------------------------------- */
+entry,
+spinbutton,
+combobox {
+    background-color: @bg_card;
+    color: @text_main;
+    border: 1px solid @border_flat;
+    border-radius: 4px;
+    padding: 2px 6px;
+    min-height: 22px;
+}
+
+entry:focus,
+spinbutton:focus {
+    border-color: @accent_primary;
+}
+
+treeview,
+treeview.view {
+    background-color: @bg_section;
+    color: @text_main;
+    border-radius: 4px;
+    padding: 0;
+}
+
+treeview.view:selected,
+treeview.view:selected:focus {
+    background-color: @accent_primary;
+    color: @accent_fg;
+}
+
+treeview.view:selected * {
+    color: @accent_fg;
+}
+
+/* -------------------------------------------------------------------
+ * 8. Range Sliders & Scrollbars
+ * ------------------------------------------------------------------- */
+scale contents trough {
+    background-color: @bg_card;
+    border-radius: 4px;
+    min-height: 6px;
+}
+
+scale contents highlight {
+    background-color: @accent_primary;
+    border-radius: 4px;
+}
+
+scale slider {
+    background-color: @text_main;
+    border-radius: 50%;
+    min-width: 12px;
+    min-height: 12px;
+    border: none;
+    margin: -3px;
+}
+
+scale slider:hover {
+    background-color: @accent_primary;
+}
+
+scrollbar trough {
+    background-color: @bg_base;
+    min-width: 8px;
+}
+
+scrollbar slider {
+    background-color: @bg_card;
+    border-radius: 4px;
+    min-width: 6px;
+    min-height: 16px;
+    border: none;
+    margin: 1px;
+}
+
+scrollbar slider:hover {
+    background-color: @accent_primary;
+}
