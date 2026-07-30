@@ -147,18 +147,10 @@ hl.window_rule({
 
 hl.layer_rule({
     match = {
-        namespace = "quickshell:bar"
+        namespace = "quickshell:.*"
     },
     blur = true,
-    ignore_alpha = 0.5
-})
-
-hl.layer_rule({
-    match = {
-        namespace = "quickshell:powerMenu"
-    },
-    blur = true,
-    ignore_alpha = 0.5
+    ignore_alpha = 0.05
 })
 
 hl.layer_rule({
