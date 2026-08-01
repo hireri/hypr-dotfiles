@@ -155,9 +155,17 @@ hl.layer_rule({
 
 hl.layer_rule({
     match = {
-        namespace = "^(quickshell-launcher|selection)$"
+        namespace = "quickshell:launcher"
     },
     no_anim = true
+})
+
+hl.layer_rule({
+    match = {
+        namespace = "quickshell:nekoOverlay"
+    },
+    no_anim = true,
+    blur = false
 })
 
 hl.layer_rule({
