@@ -98,7 +98,7 @@ hl.bind(mainMod .. " + S", hl.dsp.exec_cmd('qs -c isra ipc call quicksettings to
 hl.bind(mainMod .. " + M", hl.dsp.exec_cmd('qs -c isra ipc call powermenu toggle'))
 hl.bind(mainMod .. " + W", hl.dsp.exec_cmd('qs -c isra ipc call wallpaperpicker toggle'))
 
-hl.bind(mainMod .. " + SUPER_L", hl.dsp.exec_cmd("qs -c isra ipc call launcher toggle"), {
+hl.bind(mainMod .. " + SUPER_L", hl.dsp.exec_cmd("qs -c isra ipc call launcher toggle || fuzzel"), {
     release = true
 })
 

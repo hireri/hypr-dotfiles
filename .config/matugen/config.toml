@@ -86,3 +86,7 @@ output_path = '~/.config/feishin/Themes/matugen.json'
 [templates.gimp]
 input_path = '~/.config/matugen/templates/gimp.css'
 output_path = '~/.config/GIMP/3.2/themes/Matugen/gimp.css'
+
+[templates.konsole]
+input_path = '~/.config/matugen/templates/konsole.colorscheme'
+output_path = '~/.local/share/konsole/Matugen.colorscheme'
