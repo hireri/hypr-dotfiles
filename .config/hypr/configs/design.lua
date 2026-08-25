@@ -139,25 +139,18 @@ hl.animation({
     bezier = "almostLinear"
 })
 hl.animation({
-    leaf = "workspaces",
-    enabled = true,
-    speed = 2.0,
-    bezier = "easeOutQuint",
-    style = "slidefade 20%"
-})
-hl.animation({
     leaf = "workspacesIn",
     enabled = true,
-    speed = 2.0,
+    speed = 4.0,
     bezier = "easeOutQuint",
-    style = "slidefade 20%"
+    style = "slidevert 100%"
 })
 hl.animation({
     leaf = "workspacesOut",
     enabled = true,
-    speed = 2.0,
+    speed = 4.0,
     bezier = "easeOutQuint",
-    style = "slidefade 20%"
+    style = "slidevert 100%"
 })
 hl.animation({
     leaf = "zoomFactor",

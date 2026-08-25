@@ -124,6 +124,8 @@ hl.bind(mainMod .. " + SHIFT + S", hl.dsp.exec_cmd("qs -c isra ipc call screensh
 hl.bind(mainMod .. " + SHIFT + T", hl.dsp.exec_cmd("qs -c isra ipc call screenshot ocr"))
 hl.bind(mainMod .. " + SHIFT + G", hl.dsp.exec_cmd("qs -c isra ipc call screenshot cts"))
 hl.bind(mainMod .. " + SHIFT + R", hl.dsp.exec_cmd("qs -c isra ipc call screenshot record"))
+hl.bind(mainMod .. " + SLASH", hl.dsp.exec_cmd("qs -c isra ipc call aiassistant toggle"))
+
 hl.bind(mainMod .. " + SHIFT + C", hl.dsp.exec_cmd("hyprpicker --autocopy"))
 
 hl.bind("ALT + C", hl.dsp.exec_cmd("obs-cmd replay save"))

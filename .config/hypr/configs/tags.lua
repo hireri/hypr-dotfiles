@@ -11,6 +11,8 @@ local grouped_rules = {
         title = "^(settings)"
     }, {
         title = "^(Settings)"
+    }, {
+        class = "israshell"
     }},
 
     ["+viewer"] = {{

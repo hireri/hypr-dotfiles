@@ -149,15 +149,7 @@ hl.layer_rule({
     match = {
         namespace = "quickshell:.*"
     },
-    blur = true,
     ignore_alpha = 0.05
-})
-
-hl.layer_rule({
-    match = {
-        namespace = "quickshell:launcher"
-    },
-    no_anim = true
 })
 
 hl.layer_rule({
