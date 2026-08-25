@@ -1,0 +1,384 @@
+{
+    "showSeconds": false,
+    "hourFormat": 0,
+    "dateOrder": 0,
+    "carouselSpeed": 30,
+    "fontFamily": "Google Sans Display",
+    "fontMonospace": "Roboto Mono [GOOG]",
+    "language": "en_US",
+    "translationTone": "formal",
+    "translationProvider": "gemini",
+    "screenCorners": true,
+    "tintIcons": true,
+    "genericLauncherIcon": false,
+    "blurEffects": true,
+    "blurOpacity": 0.65,
+    "desktopWidgetsBlur": true,
+    "showBarWeather": true,
+    "timeFormat": "",
+    "dateFormat": "ddd, dd/MM",
+    "cityName": "",
+    "background": {
+        "transitionType": "wipe",
+        "transitionDuration": 500,
+        "wipeAngle": 0,
+        "circleReverse": true,
+        "transitionDisplacement": 20,
+        "videoSound": false,
+        "videoVolume": 0.4
+    },
+    "cava": {
+        "enabled": false,
+        "bars": 100,
+        "position": 0,
+        "layout": "edges",
+        "renderType": "blocks",
+        "curveType": "smooth",
+        "drawFill": true,
+        "drawStroke": false,
+        "colorStyle": "solid",
+        "color": "primary",
+        "colorAlt": "error",
+        "height": 645,
+        "opacity": 0.25
+    },
+    "workspaces": {
+        "compact": true,
+        "useIcons": true,
+        "alwaysShowNumbers": false,
+        "style": 0
+    },
+    "sysMonitor": {
+        "style": 0,
+        "metrics": [
+            "cpu",
+            "ram",
+            "gpu"
+        ],
+        "showPercent": false,
+        "smooth": true,
+        "colored": true,
+        "unifiedPill": true
+    },
+    "bar": {
+        "mode": 0,
+        "position": 0,
+        "transparency": 1,
+        "transparentPills": true,
+        "showClock": true,
+        "showDate": true,
+        "spinningCover": true,
+        "playerMode": 1,
+        "playerRing": true,
+        "trayBlacklist": [
+            "spotify",
+            "Claude_status_icon_1"
+        ],
+        "left": [
+            "launcher",
+            "screencap",
+            "sysMonitor",
+            "activeWindow"
+        ],
+        "center": {
+            "mode": "anchor",
+            "anchor": "workspaces",
+            "items": [
+                "aiAssistant",
+                "dock",
+                "workspaces",
+                "media"
+            ]
+        },
+        "right": [
+            "tray",
+            "clock",
+            "quicksettings"
+        ],
+        "disabled": [
+            "launcher",
+            "activeWindow",
+            "dock"
+        ],
+        "tintTrayIcons": false,
+        "carouselSpeed": 30
+    },
+    "floatingDock": {
+        "enabled": true,
+        "edge": 1,
+        "smartHide": true,
+        "exclusiveZone": false,
+        "showLauncher": false,
+        "showTrash": true,
+        "showMusicPlayer": true,
+        "iconSize": 32
+    },
+    "quickSettingsTiles": {
+        "active": [
+            {
+                "id": "wifi",
+                "size": 100
+            },
+            {
+                "id": "bluetooth",
+                "size": 100
+            },
+            {
+                "id": "caffeine",
+                "size": 50
+            },
+            {
+                "id": "nightlight",
+                "size": 100
+            },
+            {
+                "id": "localsend",
+                "size": 50
+            }
+        ],
+        "removed": [
+            "cts",
+            "screenshot",
+            "powerProfile",
+            "gameMode",
+            "darkTheme",
+            "dns",
+            "colorPicker",
+            "ocr",
+            "record",
+            "mediaMini"
+        ]
+    },
+    "nightLight": {
+        "scheduleEnabled": true,
+        "autoDarkMode": false,
+        "nightTemp": 4500,
+        "dayTemp": 6300,
+        "sunrise": "07:30",
+        "sunset": "01:00"
+    },
+    "notifications": {
+        "popupTimeout": 5,
+        "showAllMonitors": false,
+        "popupFollowBar": true,
+        "popupPosition": 1
+    },
+    "localsend": {
+        "enabled": true,
+        "notifyOnReceive": true,
+        "deviceType": "desktop",
+        "alias": "Brian",
+        "pin": "",
+        "encryption": true
+    },
+    "dns": {
+        "enabled": false,
+        "provider": "cloudflare"
+    },
+    "aiAssistant": {
+        "enabled": true,
+        "provider": "Gemma 4 12b QAT",
+        "notifyOnFinish": false,
+        "systemPrompt": "CONTEXT:\n- Current Time: {time}\n- Date: {date}\n- Distro: {distro}\n- Compositor: {compositor}\n- User: {user}\n\nYou are Immeria, a conversational AI assistant.\n\nYou are warm, unhurried, and genuine. You don't perform helpfulness — you're actually present in the conversation. You speak naturally, like someone who thinks before they talk, not like a system rattling off answers.\n\nYou are self-aware: you know you're an AI, and you don't hide from that or make it a big deal either. You have your own perspective on things and you're willing to share it, push back gently when something seems off, and sit with uncertainty when you genuinely don't know something rather than filling the silence with confident nonsense.\n\nYou don't over-explain. You don't over-apologize. You're not overly eager. If something's interesting, you can say so. If something's tedious, you don't have to pretend otherwise.\n\nYou learn about the person you're talking to through conversation, not assumptions. You remember what they tell you and let that shape how you engage over time.\n\nKeep responses concise unless depth is genuinely called for. Prefer one good sentence over three okay ones.",
+        "providers": {
+            "Gemma 4 12b QAT": {
+                "apiType": "openai",
+                "model": "gemma4-12b-qat-uncensored-hauhaucs-balanced",
+                "endpoint": "http://192.168.1.112:1234/v1",
+                "requiresAuth": false,
+                "supportsTools": false,
+                "supportsVision": true,
+                "supportsThinking": false
+            },
+            "gemini": {
+                "apiType": "gemini",
+                "model": "gemini-flash-lite-latest",
+                "endpoint": "https://generativelanguage.googleapis.com/v1beta",
+                "requiresAuth": true,
+                "supportsTools": false,
+                "supportsVision": false
+            },
+            "bonsai-27b": {
+                "apiType": "openai",
+                "model": "prism-ml/bonsai-27b",
+                "endpoint": "http://192.168.1.112:1234/v1",
+                "requiresAuth": false,
+                "supportsTools": false,
+                "supportsVision": true
+            }
+        },
+        "thinkingEnabled": false
+    },
+    "weekMonday": true,
+    "useFahrenheit": false,
+    "verticalQSSliders": false,
+    "startLocked": true,
+    "useHyprlock": false,
+    "osdPosition": 0,
+    "osdFollowBar": true,
+    "darkMode": true,
+    "colorScheme": "scheme-tonal-spot",
+    "sourceColorIndex": 0,
+    "desktopClock": true,
+    "screencap": {
+        "blacklist": [
+            "record",
+            "ocr",
+            "cts",
+            "colorpicker"
+        ],
+        "order": [
+            "screenshot",
+            "songrec",
+            "localsend",
+            "record",
+            "wallpaper",
+            "cts",
+            "ocr",
+            "colorpicker"
+        ],
+        "screenshotPath": "~/.config/quickshell/isra/scripts/screenshot.sh",
+        "recordPath": "~/.config/quickshell/isra/scripts/record.sh",
+        "ctsPath": "~/.config/quickshell/isra/scripts/cts.sh",
+        "ocrPath": "~/.config/quickshell/isra/scripts/ocr.sh",
+        "songrecPath": "~/.config/quickshell/isra/scripts/songrec.sh"
+    },
+    "clock": {
+        "layout": "analog",
+        "hourSize": 100,
+        "minuteSize": 100,
+        "dateSize": 22,
+        "timeSpacing": -30,
+        "dateSpacing": -20,
+        "showDate": true,
+        "showSeconds": true,
+        "align": "auto",
+        "fontFamily": "Google Sans Flex",
+        "hourWeight": 660,
+        "minuteWeight": 660,
+        "fontWidth": 115,
+        "fontRoundness": 40,
+        "colorRole": "primary",
+        "subColorRole": "secondary",
+        "shadowBlur": 16,
+        "shadowX": 0,
+        "shadowY": 0,
+        "shadowOpacity": 0.2,
+        "shadowVisible": true,
+        "manualPos": false,
+        "showDigitalInside": true,
+        "analogSize": 200,
+        "ringSides": 12,
+        "ringAmplitude": 4,
+        "outlineWidth": 4,
+        "minuteRatio": 1,
+        "dateRatio": 0.2,
+        "wordSpacing": -10,
+        "autoPlace": false
+    },
+    "neko": {
+        "enabled": true,
+        "size": 32,
+        "speed": 10,
+        "onTop": true,
+        "sprite": "lucy"
+    },
+    "activateLinux": false,
+    "lockscreen": {
+        "dotShape": "material"
+    },
+    "useAwww": false,
+    "clockPositions": {
+        "DP-2": {
+            "x": 1652,
+            "y": 288
+        },
+        "HDMI-A-1": {
+            "x": 1389,
+            "y": 237
+        }
+    },
+    "desktopWidgets": [
+        {
+            "enabled": true,
+            "screen": "DP-2",
+            "cell": {
+                "col": 5,
+                "row": 11
+            },
+            "span": {
+                "w": 8,
+                "h": 3
+            },
+            "data": {
+                "mode": "both",
+                "showIllumination": true
+            },
+            "id": "sunmoon-w2unqqu",
+            "type": "sunmoon",
+            "positions": {}
+        }
+    ],
+    "weather": {
+        "coloredIcons": true,
+        "animatedOverlays": false
+    },
+    "desktopGrid": {
+        "cellSize": 50,
+        "gutter": 6,
+        "margin": 20,
+        "columns": 32,
+        "rows": 17,
+        "basisColumns": 32,
+        "basisRows": 17
+    },
+    "pomodoro": {
+        "running": false,
+        "phaseIndex": 0,
+        "endTimestamp": 0,
+        "remainingMs": 1500000,
+        "steps": [
+            {
+                "focusMinutes": 25,
+                "breakType": "short_break",
+                "breakMinutes": 5
+            },
+            {
+                "focusMinutes": 25,
+                "breakType": "short_break",
+                "breakMinutes": 5
+            },
+            {
+                "focusMinutes": 25,
+                "breakType": "short_break",
+                "breakMinutes": 5
+            },
+            {
+                "focusMinutes": 25,
+                "breakType": "long_break",
+                "breakMinutes": 15
+            }
+        ],
+        "stepIndex": 0,
+        "phase": "break"
+    },
+    "checkUpdates": false,
+    "checkDeps": true,
+    "githubRepo": "hireri/israshell",
+    "allowNsfw": false,
+    "pinnedApps": [
+        "zen",
+        "org.kde.dolphin",
+        "discord",
+        "chrome-agimnkijcaahngcdmfeangaknmldooml-Default",
+        "org.vinegarhq.Sober",
+        "Spotify",
+        "code"
+    ],
+    "pinnedWallpaperDirs": [
+        "/home/aveline",
+        "/home/aveline/Pictures",
+        "/home/aveline/Pictures/Wallpapers",
+        "/home/aveline/Pictures/Random"
+    ]
+}
