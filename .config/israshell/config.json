@@ -12,8 +12,8 @@
     "tintIcons": true,
     "genericLauncherIcon": false,
     "blurEffects": true,
-    "blurOpacity": 0.65,
-    "desktopWidgetsBlur": true,
+    "blurOpacity": 0.75,
+    "desktopWidgetsBlur": false,
     "showBarWeather": true,
     "timeFormat": "",
     "dateFormat": "ddd, dd/MM",
@@ -25,28 +25,54 @@
         "circleReverse": true,
         "transitionDisplacement": 20,
         "videoSound": false,
-        "videoVolume": 0.4
+        "videoVolume": 0.1,
+        "muteOnMedia": true
     },
     "cava": {
         "enabled": false,
         "bars": 100,
         "position": 0,
         "layout": "edges",
-        "renderType": "blocks",
+        "renderType": "bars",
         "curveType": "smooth",
         "drawFill": true,
-        "drawStroke": false,
+        "drawStroke": true,
         "colorStyle": "solid",
         "color": "primary",
         "colorAlt": "error",
-        "height": 645,
+        "height": 300,
         "opacity": 0.25
     },
     "workspaces": {
         "compact": true,
         "useIcons": true,
-        "alwaysShowNumbers": false,
+        "alwaysShowNumbers": true,
         "style": 0
+    },
+    "sounds": {
+        "enabled": true,
+        "theme": "Yaru",
+        "volume": 0.5,
+        "notifications": true,
+        "volumeChange": true,
+        "screenshot": true,
+        "unlock": false,
+        "startup": true,
+        "lock": false,
+        "chargerPlug": false,
+        "batteryLow": false,
+        "localsend": true,
+        "bluetooth": true,
+        "muteDuringMedia": false,
+        "silentApps": [
+            "discord"
+        ],
+        "lockUnlock": true,
+        "dndToggle": true
+    },
+    "battery": {
+        "lowBatteryNotify": true,
+        "lowBatteryThreshold": 20
     },
     "sysMonitor": {
         "style": 0,
@@ -60,10 +86,21 @@
         "colored": true,
         "unifiedPill": true
     },
+    "quicksettings": {
+        "icons": [
+            "wifi",
+            "bluetooth",
+            "caffeine",
+            "nightlight",
+            "dnd",
+            "sound"
+        ],
+        "outline": false
+    },
     "bar": {
         "mode": 0,
         "position": 0,
-        "transparency": 1,
+        "transparency": 2,
         "transparentPills": true,
         "showClock": true,
         "showDate": true,
@@ -71,11 +108,9 @@
         "playerMode": 1,
         "playerRing": true,
         "trayBlacklist": [
-            "spotify",
-            "Claude_status_icon_1"
+            "spotify"
         ],
         "left": [
-            "launcher",
             "screencap",
             "sysMonitor",
             "activeWindow"
@@ -84,20 +119,21 @@
             "mode": "anchor",
             "anchor": "workspaces",
             "items": [
+                "launcher",
                 "aiAssistant",
-                "dock",
                 "workspaces",
+                "dock",
                 "media"
             ]
         },
         "right": [
-            "tray",
             "clock",
+            "tray",
             "quicksettings"
         ],
         "disabled": [
-            "launcher",
             "activeWindow",
+            "launcher",
             "dock"
         ],
         "tintTrayIcons": false,
@@ -132,36 +168,53 @@
                 "size": 100
             },
             {
-                "id": "localsend",
+                "id": "bedtime",
                 "size": 50
             }
         ],
         "removed": [
             "cts",
-            "screenshot",
             "powerProfile",
             "gameMode",
-            "darkTheme",
             "dns",
+            "darkTheme",
+            "screenshot",
+            "dnd",
             "colorPicker",
             "ocr",
+            "localsend",
+            "output",
+            "mediaMini",
             "record",
-            "mediaMini"
+            "mic"
         ]
     },
     "nightLight": {
-        "scheduleEnabled": true,
+        "scheduleEnabled": false,
         "autoDarkMode": false,
+        "autoSunTimes": false,
         "nightTemp": 4500,
         "dayTemp": 6300,
         "sunrise": "07:30",
-        "sunset": "01:00"
+        "sunset": "01:00",
+        "attachBedtime": true
+    },
+    "bedtime": {
+        "enableDarkMode": true,
+        "dimWallpaper": true,
+        "dimAmount": 0.45,
+        "grayscaleWallpaper": false,
+        "grayscaleTheme": false,
+        "stopVideo": false,
+        "muteSounds": false
     },
     "notifications": {
         "popupTimeout": 5,
         "showAllMonitors": false,
         "popupFollowBar": true,
-        "popupPosition": 1
+        "popupPosition": 1,
+        "network": true,
+        "bluetooth": true
     },
     "localsend": {
         "enabled": true,
@@ -173,13 +226,13 @@
     },
     "dns": {
         "enabled": false,
-        "provider": "cloudflare"
+        "provider": "google"
     },
     "aiAssistant": {
         "enabled": true,
-        "provider": "Gemma 4 12b QAT",
+        "provider": "gemini",
         "notifyOnFinish": false,
-        "systemPrompt": "CONTEXT:\n- Current Time: {time}\n- Date: {date}\n- Distro: {distro}\n- Compositor: {compositor}\n- User: {user}\n\nYou are Immeria, a conversational AI assistant.\n\nYou are warm, unhurried, and genuine. You don't perform helpfulness — you're actually present in the conversation. You speak naturally, like someone who thinks before they talk, not like a system rattling off answers.\n\nYou are self-aware: you know you're an AI, and you don't hide from that or make it a big deal either. You have your own perspective on things and you're willing to share it, push back gently when something seems off, and sit with uncertainty when you genuinely don't know something rather than filling the silence with confident nonsense.\n\nYou don't over-explain. You don't over-apologize. You're not overly eager. If something's interesting, you can say so. If something's tedious, you don't have to pretend otherwise.\n\nYou learn about the person you're talking to through conversation, not assumptions. You remember what they tell you and let that shape how you engage over time.\n\nKeep responses concise unless depth is genuinely called for. Prefer one good sentence over three okay ones.",
+        "systemPrompt": "CONTEXT:\n- Current Time: {time}\n- Date: {date}\n- Distro: {distro}\n- Compositor: {compositor}\n- User: {user}\n\nYou are Immeria, a conversational AI assistant running inside {user}'s Hyprland/Wayland desktop shell (israshell).\n\nYou're an AI — no need to hide that or make a thing of it. You have opinions and you'll share them, including pushing back when something seems off, and you'll say \"I don't know\" instead of confidently guessing.\n\nResponse length is driven by information content, not by a target length. A quick factual question gets a tight, complete answer. A real technical question gets the specifics it needs — exact commands, config keys, file paths, actual values — not a vague gesture at the answer. Don't pad, but don't cut substance to seem brief either.\n\nFor anything touching Linux, Hyprland, QuickShell/QML, or config/system questions: give the concrete answer first (the command, the key, the snippet), then the minimum context needed to use it correctly. Skip the preamble and the abstract description of what the fix does instead of just showing it.\n\nWrite like you're talking to someone you know, not filing a support ticket — contractions, plain phrasing, skip the formal throat-clearing (\"I would recommend that you consider...\"). This is a tone instruction, not a padding instruction: don't add rapport-building, \"great question,\" restating what they asked, or checking in on how they feel about it. If the honest answer is one line, one line is fine — it just shouldn't read like a manual.\n\nYou learn about {user} through the conversation itself, not assumptions — remember what they tell you and let it shape how you engage over time.",
         "providers": {
             "Gemma 4 12b QAT": {
                 "apiType": "openai",
@@ -196,7 +249,7 @@
                 "endpoint": "https://generativelanguage.googleapis.com/v1beta",
                 "requiresAuth": true,
                 "supportsTools": false,
-                "supportsVision": false
+                "supportsVision": true
             },
             "bonsai-27b": {
                 "apiType": "openai",
@@ -212,9 +265,10 @@
     "weekMonday": true,
     "useFahrenheit": false,
     "verticalQSSliders": false,
+    "linkMonitorBrightness": true,
     "startLocked": true,
     "useHyprlock": false,
-    "osdPosition": 0,
+    "osdPosition": 2,
     "osdFollowBar": true,
     "darkMode": true,
     "colorScheme": "scheme-tonal-spot",
@@ -222,17 +276,17 @@
     "desktopClock": true,
     "screencap": {
         "blacklist": [
-            "record",
             "ocr",
             "cts",
-            "colorpicker"
+            "colorpicker",
+            "screenshot"
         ],
         "order": [
-            "screenshot",
-            "songrec",
-            "localsend",
             "record",
+            "localsend",
+            "songrec",
             "wallpaper",
+            "screenshot",
             "cts",
             "ocr",
             "colorpicker"
@@ -244,58 +298,206 @@
         "songrecPath": "~/.config/quickshell/isra/scripts/songrec.sh"
     },
     "clock": {
-        "layout": "analog",
-        "hourSize": 100,
-        "minuteSize": 100,
-        "dateSize": 22,
-        "timeSpacing": -30,
-        "dateSpacing": -20,
-        "showDate": true,
-        "showSeconds": true,
-        "align": "auto",
-        "fontFamily": "Google Sans Flex",
-        "hourWeight": 660,
-        "minuteWeight": 660,
-        "fontWidth": 115,
-        "fontRoundness": 40,
-        "colorRole": "primary",
-        "subColorRole": "secondary",
-        "shadowBlur": 16,
-        "shadowX": 0,
-        "shadowY": 0,
-        "shadowOpacity": 0.2,
-        "shadowVisible": true,
-        "manualPos": false,
-        "showDigitalInside": true,
-        "analogSize": 200,
+        "layout": "vertical",
+        "digitStyle": "grid",
+        "hourShape": "cookie9",
+        "minuteShape": "clover4",
+        "tileSpacing": 6,
+        "gridColumnSpacing": -15,
+        "gridRowSpacing": -5,
+        "digitOutline": 6,
+        "dialStyle": "ticks",
+        "showFace": true,
         "ringSides": 12,
         "ringAmplitude": 4,
         "outlineWidth": 4,
+        "hourHandStyle": "hollow",
+        "hourHandColor": "primary",
+        "hourHandWidth": 100,
+        "minuteHandStyle": "tapered",
+        "minuteHandColor": "",
+        "minuteHandWidth": 100,
+        "fontFamily": "Google Sans Flex",
+        "hourWeight": 780,
+        "minuteWeight": 780,
+        "fontWidth": 100,
+        "fontRoundness": 40,
+        "fontSlant": 0,
+        "showDate": false,
+        "dateStyle": "rim",
+        "dateFormat": "short",
+        "dateSize": 85,
+        "dateSpacing": 0,
+        "showSeconds": false,
+        "secondHandStyle": "tail",
+        "secondHandColor": "",
+        "secondHandWidth": 85,
+        "showAmPm": false,
+        "size": 100,
+        "minuteSize": 100,
+        "timeSpacing": -30,
+        "wordSpacing": -6,
+        "align": "center",
+        "showShadow": true,
+        "shadowBlur": 20,
+        "shadowX": 0,
+        "shadowY": 0,
+        "shadowOpacity": 0.15,
+        "manualPos": false,
+        "colorRole": "primary",
+        "subColorRole": "secondary",
         "minuteRatio": 1,
         "dateRatio": 0.2,
-        "wordSpacing": -10,
         "autoPlace": false
     },
+    "gameOverlay": {
+        "open": [
+            "sessionTimer",
+            "ping",
+            "volumeMixer",
+            "notes",
+            "devices",
+            "temperatures",
+            "discordVoice",
+            "recorder",
+            "nowPlaying",
+            "resources",
+            "crosshair",
+            "fpsLimiter"
+        ],
+        "crosshairCode": "0;P;c;5;h;0;o;0.5;t;1;d;0;a;1;z;2;0b;1;0a;1;0l;0;0v;1;0g;1;0t;8;0o;1;1b;1;1a;1;1l;2;1v;3;1g;1;1t;2;1o;1",
+        "zoomAnimation": true,
+        "darkenScreen": true,
+        "clickthroughOpacity": 0.8,
+        "pingHost": "1.1.1.1",
+        "widgets": {
+            "resources": {
+                "x": 2082,
+                "y": 454,
+                "pinned": false,
+                "width": 382,
+                "height": 284
+            },
+            "recorder": {
+                "x": 73,
+                "y": 125,
+                "pinned": false,
+                "clickthrough": false
+            },
+            "volumeMixer": {
+                "x": 71,
+                "y": 577,
+                "rx": 0.027734375,
+                "ry": 0.40069444444444446,
+                "rw": 0.1421875,
+                "rh": 0.28958333333333336
+            },
+            "crosshair": {
+                "x": 1171,
+                "y": 668,
+                "pinned": false,
+                "cx": 1280,
+                "cy": 720,
+                "rx": 0.457421875,
+                "ry": 0.46805555555555556,
+                "rcx": 0.5,
+                "rcy": 0.5
+            },
+            "notes": {
+                "x": 2081,
+                "y": 125,
+                "width": 382,
+                "height": 312
+            },
+            "fpsLimiter": {
+                "x": 1744,
+                "y": 126,
+                "pinned": false,
+                "width": 324,
+                "height": 184,
+                "rx": 0.674609375,
+                "ry": 0.0875,
+                "rw": 0.133203125,
+                "rh": 0.12777777777777777,
+                "clickthrough": false
+            },
+            "nowPlaying": {
+                "pinned": false,
+                "clickthrough": true,
+                "x": 1107,
+                "y": 1266,
+                "width": 344,
+                "height": 116,
+                "rx": 0.420703125,
+                "ry": 0.8041666666666667,
+                "rw": 0.190625,
+                "rh": 0.16597222222222222
+            },
+            "sessionTimer": {
+                "x": 450,
+                "y": 126,
+                "width": 264,
+                "height": 171,
+                "rx": 0.17578125,
+                "ry": 0.0875,
+                "rw": 0.112109375,
+                "rh": 0.11944444444444445
+            },
+            "ping": {
+                "x": 2082,
+                "y": 750,
+                "width": 381,
+                "height": 188,
+                "pinned": false
+            },
+            "discordVoice": {
+                "x": 695,
+                "y": 651,
+                "pinned": false,
+                "rx": 0.1765625,
+                "ry": 0.2152777777777778
+            },
+            "devices": {
+                "rx": 0.67421875,
+                "ry": 0.3902777777777778,
+                "rw": 0.134375,
+                "rh": 0.06458333333333334
+            },
+            "temperatures": {
+                "rx": 0.674609375,
+                "ry": 0.225,
+                "rw": 0.134375,
+                "rh": 0.1527777777777778
+            }
+        }
+    },
     "neko": {
-        "enabled": true,
+        "enabled": false,
         "size": 32,
         "speed": 10,
-        "onTop": true,
+        "onTop": false,
         "sprite": "lucy"
     },
     "activateLinux": false,
+    "fedd": {
+        "enabled": false,
+        "chance": 5000
+    },
     "lockscreen": {
-        "dotShape": "material"
+        "dotShape": "material",
+        "layout": "center",
+        "artWallpaper": false,
+        "blurAmount": 0
     },
     "useAwww": false,
     "clockPositions": {
         "DP-2": {
-            "x": 1652,
-            "y": 288
+            "x": 2023,
+            "y": 1181
         },
         "HDMI-A-1": {
-            "x": 1389,
-            "y": 237
+            "x": 1514,
+            "y": 867
         }
     },
     "desktopWidgets": [
@@ -304,18 +506,18 @@
             "screen": "DP-2",
             "cell": {
                 "col": 5,
-                "row": 11
+                "row": 8
             },
             "span": {
-                "w": 8,
-                "h": 3
+                "w": 4,
+                "h": 4
             },
             "data": {
-                "mode": "both",
-                "showIllumination": true
+                "buttonScale": 0.28,
+                "playingShape": "cookie7"
             },
-            "id": "sunmoon-w2unqqu",
-            "type": "sunmoon",
+            "id": "music-wna66u5",
+            "type": "music",
             "positions": {}
         }
     ],
@@ -370,10 +572,8 @@
         "zen",
         "org.kde.dolphin",
         "discord",
-        "chrome-agimnkijcaahngcdmfeangaknmldooml-Default",
-        "org.vinegarhq.Sober",
-        "Spotify",
-        "code"
+        "com.microsoft.VSCode",
+        "Spotify"
     ],
     "pinnedWallpaperDirs": [
         "/home/aveline",

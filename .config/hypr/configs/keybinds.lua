@@ -133,7 +133,7 @@ hl.bind("ALT + C", hl.dsp.exec_cmd("obs-cmd replay save"))
 -- -----------------------------------------------------
 -- Appearance & UI
 -- -----------------------------------------------------
-hl.bind(mainMod .. " + G", hl.dsp.exec_cmd("qs -c isra ipc call gamemode toggle"))
+hl.bind(mainMod .. " + G", hl.dsp.exec_cmd("qs -c isra ipc call gameoverlay toggle"))
 
 -- -----------------------------------------------------
 -- Hardware & Multimedia

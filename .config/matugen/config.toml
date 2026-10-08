@@ -90,3 +90,11 @@ output_path = '~/.config/GIMP/3.2/themes/Matugen/gimp.css'
 [templates.konsole]
 input_path = '~/.config/matugen/templates/konsole.colorscheme'
 output_path = '~/.local/share/konsole/Matugen.colorscheme'
+
+[templates.micro]
+input_path = '~/.config/matugen/templates/micro.micro'
+output_path = '~/.config/micro/colorschemes/matugen.micro'
+
+[templates.yoake]
+input_path = '~/.config/matugen/templates/yoake.json'
+output_path = '~/.config/com.aveline.yoake-gui/themes/matugen.json'

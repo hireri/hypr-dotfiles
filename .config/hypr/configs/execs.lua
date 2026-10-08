@@ -1,6 +1,5 @@
 local commands = {
     "dbus-update-activation-environment --all",
-    "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1",
     "hypridle",
     "localsendd &",
     "qs -n -c isra",

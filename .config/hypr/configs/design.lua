@@ -21,7 +21,6 @@ hl.config({
             size = 10,
             passes = 3,
             brightness = 1,
-            vibrancy = 0.5,
             vibrancy_darkness = 0.5
         }
     }

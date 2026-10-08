@@ -109,5 +109,7 @@ set PATH $PATH $HOME/.local/bin
 set -gx PATH $PATH /home/aveline/.lmstudio/bin
 # End of LM Studio CLI section
 
+set -gx PATH $HOME/development/flutter/bin $PATH
+
 # Generated for envman. Do not edit.
 test -s ~/.config/envman/load.fish; and source ~/.config/envman/load.fish

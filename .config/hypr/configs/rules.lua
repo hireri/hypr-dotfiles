@@ -154,14 +154,6 @@ hl.layer_rule({
 
 hl.layer_rule({
     match = {
-        namespace = "quickshell:nekoOverlay"
-    },
-    no_anim = true,
-    blur = false
-})
-
-hl.layer_rule({
-    match = {
         initial_title = "steam_app_2457888594"
     },
     blur = false
