@@ -9,7 +9,8 @@
     "translationTone": "formal",
     "translationProvider": "gemini",
     "screenCorners": true,
-    "tintIcons": true,
+    "tintIcons": false,
+    "siteIcons": true,
     "genericLauncherIcon": false,
     "blurEffects": true,
     "blurOpacity": 0.75,
@@ -29,19 +30,20 @@
         "muteOnMedia": true
     },
     "cava": {
-        "enabled": false,
-        "bars": 100,
+        "enabled": true,
+        "bars": 60,
         "position": 0,
         "layout": "edges",
-        "renderType": "bars",
+        "renderType": "curve",
         "curveType": "smooth",
         "drawFill": true,
-        "drawStroke": true,
+        "drawStroke": false,
         "colorStyle": "solid",
         "color": "primary",
         "colorAlt": "error",
-        "height": 300,
-        "opacity": 0.25
+        "heightPct": 50,
+        "opacity": 0.15000000000000002,
+        "height": 700
     },
     "workspaces": {
         "compact": true,
@@ -95,7 +97,8 @@
             "dnd",
             "sound"
         ],
-        "outline": false
+        "outline": false,
+        "layout": "joined"
     },
     "bar": {
         "mode": 0,
@@ -147,7 +150,8 @@
         "showLauncher": false,
         "showTrash": true,
         "showMusicPlayer": true,
-        "iconSize": 32
+        "iconSize": 32,
+        "siteIcons": true
     },
     "quickSettingsTiles": {
         "active": [
@@ -164,7 +168,7 @@
                 "size": 50
             },
             {
-                "id": "nightlight",
+                "id": "dnd",
                 "size": 100
             },
             {
@@ -174,18 +178,19 @@
         ],
         "removed": [
             "cts",
-            "powerProfile",
-            "gameMode",
-            "dns",
             "darkTheme",
             "screenshot",
-            "dnd",
-            "colorPicker",
+            "nightlight",
             "ocr",
+            "colorPicker",
             "localsend",
-            "output",
+            "gameMode",
             "mediaMini",
+            "dns",
+            "vpn",
+            "powerProfile",
             "record",
+            "output",
             "mic"
         ]
     },
@@ -202,7 +207,7 @@
     "bedtime": {
         "enableDarkMode": true,
         "dimWallpaper": true,
-        "dimAmount": 0.45,
+        "dimAmount": 0.2,
         "grayscaleWallpaper": false,
         "grayscaleTheme": false,
         "stopVideo": false,
@@ -298,13 +303,13 @@
         "songrecPath": "~/.config/quickshell/isra/scripts/songrec.sh"
     },
     "clock": {
-        "layout": "vertical",
+        "layout": "analog",
         "digitStyle": "grid",
-        "hourShape": "cookie9",
-        "minuteShape": "clover4",
+        "hourShape": "cookie12",
+        "minuteShape": "square",
         "tileSpacing": 6,
-        "gridColumnSpacing": -15,
-        "gridRowSpacing": -5,
+        "gridColumnSpacing": -20,
+        "gridRowSpacing": -10,
         "digitOutline": 6,
         "dialStyle": "ticks",
         "showFace": true,
@@ -318,9 +323,9 @@
         "minuteHandColor": "",
         "minuteHandWidth": 100,
         "fontFamily": "Google Sans Flex",
-        "hourWeight": 780,
-        "minuteWeight": 780,
-        "fontWidth": 100,
+        "hourWeight": 1000,
+        "minuteWeight": 1000,
+        "fontWidth": 112,
         "fontRoundness": 40,
         "fontSlant": 0,
         "showDate": false,
@@ -328,7 +333,7 @@
         "dateFormat": "short",
         "dateSize": 85,
         "dateSpacing": 0,
-        "showSeconds": false,
+        "showSeconds": true,
         "secondHandStyle": "tail",
         "secondHandColor": "",
         "secondHandWidth": 85,
@@ -358,12 +363,12 @@
             "notes",
             "devices",
             "temperatures",
-            "discordVoice",
             "recorder",
             "nowPlaying",
             "resources",
             "crosshair",
-            "fpsLimiter"
+            "fpsLimiter",
+            "discordVoice"
         ],
         "crosshairCode": "0;P;c;5;h;0;o;0.5;t;1;d;0;a;1;z;2;0b;1;0a;1;0l;0;0v;1;0g;1;0t;8;0o;1;1b;1;1a;1;1l;2;1v;3;1g;1;1t;2;1o;1",
         "zoomAnimation": true,
@@ -455,7 +460,8 @@
                 "y": 651,
                 "pinned": false,
                 "rx": 0.1765625,
-                "ry": 0.2152777777777778
+                "ry": 0.2152777777777778,
+                "pinnedFor": ""
             },
             "devices": {
                 "rx": 0.67421875,
@@ -471,8 +477,18 @@
             }
         }
     },
+    "voice": {
+        "output": "type",
+        "language": "auto",
+        "model": "turbo",
+        "gpu": true,
+        "serverPath": "~/Projects/luzy/bin/whisper/whisper-server",
+        "modelPath": "",
+        "port": 8190,
+        "unloadSeconds": 60
+    },
     "neko": {
-        "enabled": false,
+        "enabled": true,
         "size": 32,
         "speed": 10,
         "onTop": false,
@@ -492,33 +508,28 @@
     "useAwww": false,
     "clockPositions": {
         "DP-2": {
-            "x": 2023,
-            "y": 1181
+            "x": 423,
+            "y": 792
         },
         "HDMI-A-1": {
-            "x": 1514,
-            "y": 867
+            "x": 340,
+            "y": 622
         }
     },
     "desktopWidgets": [
         {
             "enabled": true,
-            "screen": "DP-2",
-            "cell": {
-                "col": 5,
-                "row": 8
-            },
-            "span": {
-                "w": 4,
-                "h": 4
-            },
+            "mirror": true,
+            "x": 1018,
+            "y": 341,
+            "width": 535,
+            "height": 288,
+            "positions": {},
             "data": {
-                "buttonScale": 0.28,
-                "playingShape": "cookie7"
+                "tinted": false
             },
-            "id": "music-wna66u5",
-            "type": "music",
-            "positions": {}
+            "id": "weyes-9pr9ydk",
+            "type": "weyes"
         }
     ],
     "weather": {

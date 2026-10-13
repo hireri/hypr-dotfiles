@@ -40,15 +40,9 @@ hl.bind(mainMod .. " + P", hl.dsp.window.pin({
 }))
 
 -- Tab Cycling
-hl.bind("ALT + Tab", function()
-    hl.dispatch(hl.dsp.window.cycle_next())
-    hl.dispatch(hl.dsp.window.alter_zorder({
-        mode = "top"
-    }))
-end)
-hl.bind("ALT + SHIFT + Tab", hl.dsp.window.cycle_next({
-    prev = true
-}))
+hl.bind("ALT + Tab", hl.dsp.exec_cmd("qs -c isra ipc call switcher next"))
+hl.bind("ALT + SHIFT + Tab", hl.dsp.exec_cmd("qs -c isra ipc call switcher prev"))
+hl.bind(mainMod .. " + Tab", hl.dsp.exec_cmd("qs -c isra ipc call overview toggle"))
 
 -- -----------------------------------------------------
 -- Workspace Management
@@ -125,6 +119,12 @@ hl.bind(mainMod .. " + SHIFT + T", hl.dsp.exec_cmd("qs -c isra ipc call screensh
 hl.bind(mainMod .. " + SHIFT + G", hl.dsp.exec_cmd("qs -c isra ipc call screenshot cts"))
 hl.bind(mainMod .. " + SHIFT + R", hl.dsp.exec_cmd("qs -c isra ipc call screenshot record"))
 hl.bind(mainMod .. " + SLASH", hl.dsp.exec_cmd("qs -c isra ipc call aiassistant toggle"))
+
+-- voice dictation
+hl.bind("F9", hl.dsp.exec_cmd("qs -c isra ipc call voice press"))
+hl.bind("F9", hl.dsp.exec_cmd("qs -c isra ipc call voice release"), {
+    release = true
+})
 
 hl.bind(mainMod .. " + SHIFT + C", hl.dsp.exec_cmd("hyprpicker --autocopy"))
 
