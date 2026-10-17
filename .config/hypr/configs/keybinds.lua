@@ -110,6 +110,7 @@ hl.bind(mainMod .. " + SHIFT + B", hl.dsp.exec_cmd("qs -c isra ipc call media pr
 })
 
 hl.bind(mainMod .. " + I", hl.dsp.exec_cmd("qs -c isra ipc call settings open overview"))
+hl.bind(mainMod .. " + O", hl.dsp.exec_cmd("qs -c isra ipc call system open overview"))
 hl.bind(mainMod .. " + SHIFT + S", hl.dsp.exec_cmd("qs -c isra ipc call screenshot activate"))
 
 -- -----------------------------------------------------

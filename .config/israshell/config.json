@@ -13,8 +13,8 @@
     "siteIcons": true,
     "genericLauncherIcon": false,
     "blurEffects": true,
-    "blurOpacity": 0.75,
-    "desktopWidgetsBlur": false,
+    "blurOpacity": 0.7000000000000001,
+    "desktopWidgetsBlur": true,
     "showBarWeather": true,
     "timeFormat": "",
     "dateFormat": "ddd, dd/MM",
@@ -31,10 +31,10 @@
     },
     "cava": {
         "enabled": true,
-        "bars": 60,
+        "bars": 40,
         "position": 0,
         "layout": "edges",
-        "renderType": "curve",
+        "renderType": "blocks",
         "curveType": "smooth",
         "drawFill": true,
         "drawStroke": false,
@@ -95,7 +95,8 @@
             "caffeine",
             "nightlight",
             "dnd",
-            "sound"
+            "sound",
+            "vpn"
         ],
         "outline": false,
         "layout": "joined"
@@ -116,7 +117,9 @@
         "left": [
             "screencap",
             "sysMonitor",
-            "activeWindow"
+            "activeWindow",
+            "systemHealth",
+            "screenTime"
         ],
         "center": {
             "mode": "anchor",
@@ -136,6 +139,8 @@
         ],
         "disabled": [
             "activeWindow",
+            "systemHealth",
+            "screenTime",
             "launcher",
             "dock"
         ],
@@ -194,8 +199,29 @@
             "mic"
         ]
     },
+    "powerMenu": {
+        "entries": [
+            {
+                "id": "firmware"
+            },
+            {
+                "id": "hybrid"
+            },
+            {
+                "id": "custom-windows",
+                "label": "Reboot to Windows",
+                "icon": "window",
+                "command": "pkexec sh -c 'n=$(efibootmgr | sed -n \"s/^Boot\\([0-9A-F]\\{4\\}\\)\\*\\{0,1\\} Windows Boot Manager.*/\\1/p\" | head -n1) && efibootmgr --bootnext \"$n\" && reboot'",
+                "key": "W",
+                "hold": true
+            },
+            {
+                "id": "exit"
+            }
+        ]
+    },
     "nightLight": {
-        "scheduleEnabled": false,
+        "scheduleEnabled": true,
         "autoDarkMode": false,
         "autoSunTimes": false,
         "nightTemp": 4500,
@@ -207,11 +233,54 @@
     "bedtime": {
         "enableDarkMode": true,
         "dimWallpaper": true,
-        "dimAmount": 0.2,
+        "dimAmount": 0.35000000000000003,
         "grayscaleWallpaper": false,
         "grayscaleTheme": false,
         "stopVideo": false,
         "muteSounds": false
+    },
+    "screentime": {
+        "enabled": true,
+        "paused": false,
+        "idleSeconds": 120,
+        "appFocus": true,
+        "hourly": true,
+        "workspaces": true,
+        "fullscreen": true,
+        "media": true,
+        "notifications": true,
+        "unlocks": true,
+        "windowTitles": false,
+        "retentionDays": 90,
+        "excluded": [
+            "com.anthropic.claude"
+        ],
+        "categoryOverrides": {
+            "israshell": "other",
+            "xdg-desktop-portal-gtk": "other"
+        }
+    },
+    "health": {
+        "enabled": true,
+        "intervalMinutes": 30,
+        "barChipLevel": "info",
+        "newsSeen": 0,
+        "newsRead": [
+            "https://archlinux.org/news/nvidia-590-driver-drops-pascal-support-main-packages-switch-to-open-kernel-modules/",
+            "https://archlinux.org/news/mkinitcpio-42-requires-manual-intervention-for-tpm2-based-unlocking-of-luks-devices/",
+            "https://archlinux.org/news/net-packages-may-require-manual-intervention/"
+        ],
+        "disabledChecks": [],
+        "dismissed": {
+            "pkg.orphans": {
+                "sig": "warn||0||",
+                "until": 1792813979434
+            },
+            "pkg.pacnew": {
+                "sig": "warn||0||",
+                "until": 1792813979975
+            }
+        }
     },
     "notifications": {
         "popupTimeout": 5,
@@ -282,9 +351,10 @@
     "screencap": {
         "blacklist": [
             "ocr",
-            "cts",
             "colorpicker",
-            "screenshot"
+            "screenshot",
+            "voice",
+            "cts"
         ],
         "order": [
             "record",
@@ -300,7 +370,9 @@
         "recordPath": "~/.config/quickshell/isra/scripts/record.sh",
         "ctsPath": "~/.config/quickshell/isra/scripts/cts.sh",
         "ocrPath": "~/.config/quickshell/isra/scripts/ocr.sh",
-        "songrecPath": "~/.config/quickshell/isra/scripts/songrec.sh"
+        "songrecPath": "~/.config/quickshell/isra/scripts/songrec.sh",
+        "recordFormat": "gif",
+        "instantCapture": true
     },
     "clock": {
         "layout": "analog",
@@ -508,28 +580,34 @@
     "useAwww": false,
     "clockPositions": {
         "DP-2": {
-            "x": 423,
-            "y": 792
+            "x": 1745,
+            "y": 298
         },
         "HDMI-A-1": {
-            "x": 340,
-            "y": 622
+            "x": 630,
+            "y": 252
         }
     },
     "desktopWidgets": [
         {
             "enabled": true,
-            "mirror": true,
-            "x": 1018,
-            "y": 341,
-            "width": 535,
-            "height": 288,
-            "positions": {},
-            "data": {
-                "tinted": false
+            "screen": "DP-2",
+            "cell": {
+                "col": 5,
+                "row": 17
             },
-            "id": "weyes-9pr9ydk",
-            "type": "weyes"
+            "span": {
+                "w": 4,
+                "h": 4
+            },
+            "data": {
+                "buttonScale": 0.28,
+                "shape": "circle",
+                "playingShape": "puffy"
+            },
+            "id": "music-6pk6ud4",
+            "type": "music",
+            "positions": {}
         }
     ],
     "weather": {
@@ -545,11 +623,20 @@
         "basisColumns": 32,
         "basisRows": 17
     },
+    "calendar": {
+        "roots": [],
+        "hidden": [],
+        "holidays": true,
+        "holidayRegion": "",
+        "autoSync": false,
+        "syncMinutes": 5,
+        "reminders": true
+    },
     "pomodoro": {
         "running": false,
-        "phaseIndex": 0,
-        "endTimestamp": 0,
-        "remainingMs": 1500000,
+        "phaseIndex": 1,
+        "endTimestamp": 1792112886333,
+        "remainingMs": 300000,
         "steps": [
             {
                 "focusMinutes": 25,
