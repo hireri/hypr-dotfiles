@@ -13,7 +13,7 @@
     "siteIcons": true,
     "genericLauncherIcon": false,
     "blurEffects": true,
-    "blurOpacity": 0.7000000000000001,
+    "blurOpacity": 1,
     "desktopWidgetsBlur": true,
     "showBarWeather": true,
     "timeFormat": "",
@@ -274,11 +274,11 @@
         "dismissed": {
             "pkg.orphans": {
                 "sig": "warn||0||",
-                "until": 1792813979434
+                "until": 1792884701054
             },
             "pkg.pacnew": {
                 "sig": "warn||0||",
-                "until": 1792813979975
+                "until": 1792884701667
             }
         }
     },
@@ -371,7 +371,7 @@
         "ctsPath": "~/.config/quickshell/isra/scripts/cts.sh",
         "ocrPath": "~/.config/quickshell/isra/scripts/ocr.sh",
         "songrecPath": "~/.config/quickshell/isra/scripts/songrec.sh",
-        "recordFormat": "gif",
+        "recordFormat": "mp4",
         "instantCapture": true
     },
     "clock": {
@@ -580,36 +580,15 @@
     "useAwww": false,
     "clockPositions": {
         "DP-2": {
-            "x": 1745,
-            "y": 298
+            "x": 433,
+            "y": 1146
         },
         "HDMI-A-1": {
-            "x": 630,
-            "y": 252
+            "x": 344,
+            "y": 841
         }
     },
-    "desktopWidgets": [
-        {
-            "enabled": true,
-            "screen": "DP-2",
-            "cell": {
-                "col": 5,
-                "row": 17
-            },
-            "span": {
-                "w": 4,
-                "h": 4
-            },
-            "data": {
-                "buttonScale": 0.28,
-                "shape": "circle",
-                "playingShape": "puffy"
-            },
-            "id": "music-6pk6ud4",
-            "type": "music",
-            "positions": {}
-        }
-    ],
+    "desktopWidgets": [],
     "weather": {
         "coloredIcons": true,
         "animatedOverlays": false
