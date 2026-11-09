@@ -7,6 +7,9 @@ hl.config({
     misc = {
         disable_hyprland_logo = true,
         middle_click_paste = false
+    },
+    render = {
+        cm_auto_hdr = 0
     }
 })
 

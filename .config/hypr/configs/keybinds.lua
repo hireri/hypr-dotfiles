@@ -89,12 +89,18 @@ hl.bind(mainMod .. " + Escape", hl.dsp.exec_cmd("missioncenter"))
 
 -- Quickshell
 hl.bind(mainMod .. " + S", hl.dsp.exec_cmd('qs -c isra ipc call quicksettings toggle'))
+-- hl.bind(mainMod .. " + S", hl.dsp.exec_cmd('qs -c newshell ipc call phone toggle'))
 hl.bind(mainMod .. " + M", hl.dsp.exec_cmd('qs -c isra ipc call powermenu toggle'))
+-- hl.bind(mainMod .. " + M", hl.dsp.exec_cmd('qs -c newshell ipc call phone power'))
 hl.bind(mainMod .. " + W", hl.dsp.exec_cmd('qs -c isra ipc call wallpaperpicker toggle'))
+-- hl.bind(mainMod .. " + W", hl.dsp.exec_cmd('qs -c newshell ipc call phone goto wallpapers'))
 
-hl.bind(mainMod .. " + SUPER_L", hl.dsp.exec_cmd("qs -c isra ipc call launcher toggle || fuzzel"), {
-    release = true
-})
+hl.bind(mainMod .. " + SUPER_L",
+    hl.dsp.exec_cmd("qs -c isra ipc call launcher toggle || qs -c newshell ipc call phone goto apps || fuzzel"), {
+        release = true
+    })
+
+hl.bind(mainMod .. " + SLASH", hl.dsp.exec_cmd('qs -c newshell ipc call phone goto keys'))
 
 hl.bind(mainMod .. " + V", hl.dsp.exec_cmd('qs -c isra ipc call launcher openWith ";"'))
 hl.bind(mainMod .. " + Period", hl.dsp.exec_cmd('qs -c isra ipc call launcher openWith ":"'))
@@ -111,7 +117,7 @@ hl.bind(mainMod .. " + SHIFT + B", hl.dsp.exec_cmd("qs -c isra ipc call media pr
 
 hl.bind(mainMod .. " + I", hl.dsp.exec_cmd("qs -c isra ipc call settings open overview"))
 hl.bind(mainMod .. " + O", hl.dsp.exec_cmd("qs -c isra ipc call system open overview"))
-hl.bind(mainMod .. " + SHIFT + S", hl.dsp.exec_cmd("qs -c isra ipc call screenshot activate"))
+hl.bind(mainMod .. " + SHIFT + S", hl.dsp.exec_cmd("qs -c isra ipc call screenshot region"))
 
 -- -----------------------------------------------------
 -- Utilities & Tools

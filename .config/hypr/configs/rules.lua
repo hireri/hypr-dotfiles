@@ -152,6 +152,14 @@ hl.layer_rule({
     ignore_alpha = 0.05
 })
 
+-- newshell's screenshot overlay: once a shot is taken, the live desk behind it is blurred
+hl.layer_rule({
+    match = {
+        namespace = "^(quickshell:capture)$"
+    },
+    blur = true
+})
+
 hl.layer_rule({
     match = {
         initial_title = "steam_app_2457888594"

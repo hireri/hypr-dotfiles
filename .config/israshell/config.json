@@ -13,8 +13,8 @@
     "siteIcons": true,
     "genericLauncherIcon": false,
     "blurEffects": true,
-    "blurOpacity": 1,
-    "desktopWidgetsBlur": true,
+    "blurOpacity": 0.65,
+    "desktopWidgetsBlur": false,
     "showBarWeather": true,
     "timeFormat": "",
     "dateFormat": "ddd, dd/MM",
@@ -30,14 +30,14 @@
         "muteOnMedia": true
     },
     "cava": {
-        "enabled": true,
+        "enabled": false,
         "bars": 40,
-        "position": 0,
+        "position": 1,
         "layout": "edges",
-        "renderType": "blocks",
+        "renderType": "curve",
         "curveType": "smooth",
         "drawFill": true,
-        "drawStroke": false,
+        "drawStroke": true,
         "colorStyle": "solid",
         "color": "primary",
         "colorAlt": "error",
@@ -104,7 +104,7 @@
     "bar": {
         "mode": 0,
         "position": 0,
-        "transparency": 2,
+        "transparency": 1,
         "transparentPills": true,
         "showClock": true,
         "showDate": true,
@@ -116,6 +116,7 @@
         ],
         "left": [
             "screencap",
+            "dock",
             "sysMonitor",
             "activeWindow",
             "systemHealth",
@@ -128,7 +129,6 @@
                 "launcher",
                 "aiAssistant",
                 "workspaces",
-                "dock",
                 "media"
             ]
         },
@@ -138,11 +138,11 @@
             "quicksettings"
         ],
         "disabled": [
+            "dock",
             "activeWindow",
             "systemHealth",
             "screenTime",
-            "launcher",
-            "dock"
+            "launcher"
         ],
         "tintTrayIcons": false,
         "carouselSpeed": 30
@@ -185,7 +185,6 @@
             "cts",
             "darkTheme",
             "screenshot",
-            "nightlight",
             "ocr",
             "colorPicker",
             "localsend",
@@ -193,10 +192,11 @@
             "mediaMini",
             "dns",
             "vpn",
-            "powerProfile",
             "record",
             "output",
-            "mic"
+            "mic",
+            "powerProfile",
+            "nightlight"
         ]
     },
     "powerMenu": {
@@ -221,10 +221,10 @@
         ]
     },
     "nightLight": {
-        "scheduleEnabled": true,
+        "scheduleEnabled": false,
         "autoDarkMode": false,
         "autoSunTimes": false,
-        "nightTemp": 4500,
+        "nightTemp": 4800,
         "dayTemp": 6300,
         "sunrise": "07:30",
         "sunset": "01:00",
@@ -252,9 +252,7 @@
         "unlocks": true,
         "windowTitles": false,
         "retentionDays": 90,
-        "excluded": [
-            "com.anthropic.claude"
-        ],
+        "excluded": [],
         "categoryOverrides": {
             "israshell": "other",
             "xdg-desktop-portal-gtk": "other"
@@ -274,11 +272,11 @@
         "dismissed": {
             "pkg.orphans": {
                 "sig": "warn||0||",
-                "until": 1792884701054
+                "until": 1794709374987
             },
             "pkg.pacnew": {
                 "sig": "warn||0||",
-                "until": 1792884701667
+                "until": 1794709376792
             }
         }
     },
@@ -371,11 +369,11 @@
         "ctsPath": "~/.config/quickshell/isra/scripts/cts.sh",
         "ocrPath": "~/.config/quickshell/isra/scripts/ocr.sh",
         "songrecPath": "~/.config/quickshell/isra/scripts/songrec.sh",
-        "recordFormat": "mp4",
+        "recordFormat": "gif",
         "instantCapture": true
     },
     "clock": {
-        "layout": "analog",
+        "layout": "horizontal",
         "digitStyle": "grid",
         "hourShape": "cookie12",
         "minuteShape": "square",
@@ -383,21 +381,21 @@
         "gridColumnSpacing": -20,
         "gridRowSpacing": -10,
         "digitOutline": 6,
-        "dialStyle": "ticks",
+        "dialStyle": "numerals",
         "showFace": true,
         "ringSides": 12,
-        "ringAmplitude": 4,
+        "ringAmplitude": 0,
         "outlineWidth": 4,
-        "hourHandStyle": "hollow",
+        "hourHandStyle": "capsule",
         "hourHandColor": "primary",
         "hourHandWidth": 100,
-        "minuteHandStyle": "tapered",
+        "minuteHandStyle": "capsule",
         "minuteHandColor": "",
         "minuteHandWidth": 100,
         "fontFamily": "Google Sans Flex",
         "hourWeight": 1000,
         "minuteWeight": 1000,
-        "fontWidth": 112,
+        "fontWidth": 100,
         "fontRoundness": 40,
         "fontSlant": 0,
         "showDate": false,
@@ -405,12 +403,12 @@
         "dateFormat": "short",
         "dateSize": 85,
         "dateSpacing": 0,
-        "showSeconds": true,
+        "showSeconds": false,
         "secondHandStyle": "tail",
         "secondHandColor": "",
         "secondHandWidth": 85,
         "showAmPm": false,
-        "size": 100,
+        "size": 120,
         "minuteSize": 100,
         "timeSpacing": -30,
         "wordSpacing": -6,
@@ -419,10 +417,10 @@
         "shadowBlur": 20,
         "shadowX": 0,
         "shadowY": 0,
-        "shadowOpacity": 0.15,
-        "manualPos": false,
-        "colorRole": "primary",
-        "subColorRole": "secondary",
+        "shadowOpacity": 0.2,
+        "manualPos": true,
+        "colorRole": "on_surface",
+        "subColorRole": "primary",
         "minuteRatio": 1,
         "dateRatio": 0.2,
         "autoPlace": false
@@ -431,16 +429,15 @@
         "open": [
             "sessionTimer",
             "ping",
-            "volumeMixer",
             "notes",
-            "devices",
-            "temperatures",
             "recorder",
             "nowPlaying",
             "resources",
             "crosshair",
             "fpsLimiter",
-            "discordVoice"
+            "temperatures",
+            "devices",
+            "volumeMixer"
         ],
         "crosshairCode": "0;P;c;5;h;0;o;0.5;t;1;d;0;a;1;z;2;0b;1;0a;1;0l;0;0v;1;0g;1;0t;8;0o;1;1b;1;1a;1;1l;2;1v;3;1g;1;1t;2;1o;1",
         "zoomAnimation": true,
@@ -478,7 +475,8 @@
                 "rx": 0.457421875,
                 "ry": 0.46805555555555556,
                 "rcx": 0.5,
-                "rcy": 0.5
+                "rcy": 0.5,
+                "pinnedFor": ""
             },
             "notes": {
                 "x": 2081,
@@ -530,10 +528,10 @@
             "discordVoice": {
                 "x": 695,
                 "y": 651,
-                "pinned": false,
-                "rx": 0.1765625,
-                "ry": 0.2152777777777778,
-                "pinnedFor": ""
+                "pinned": true,
+                "rx": 0,
+                "ry": 0,
+                "pinnedFor": "Minecraft* 1.20.1"
             },
             "devices": {
                 "rx": 0.67421875,
@@ -580,12 +578,12 @@
     "useAwww": false,
     "clockPositions": {
         "DP-2": {
-            "x": 433,
-            "y": 1146
+            "x": 2360,
+            "y": 146
         },
         "HDMI-A-1": {
-            "x": 344,
-            "y": 841
+            "x": 1576,
+            "y": 580
         }
     },
     "desktopWidgets": [],
